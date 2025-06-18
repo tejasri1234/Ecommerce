@@ -1,0 +1,48 @@
+/* Enter your custom styles here */
+.customNavBar {
+    background-color: white;
+    padding: 0.5rem 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    width: 100%;
+}
+
+.freshText {
+    font-size: 1.5rem;
+    color: #2e7d32; /* Green */
+    font-weight: bold;
+}
+
+.martText {
+    font-size: 1.5rem;
+    color: #ff6f00; /* Orange */
+    font-weight: normal;
+}
+
+.logoBox {
+    margin-left: 2rem;
+}
+
+.searchBox {
+    padding: 0 1rem;
+}
+
+.rightIcons button {
+    margin-left: 1.5rem;
+}
+
+.largeIconButton .sapMBtnIcon {
+    font-size: 1.5rem !important;      /* Increase icon size */
+    line-height: 1 !important;
+    width: 2rem;
+    height: 1.5rem;
+}
+
+/* Optionally resize the button itself */
+.largeIconButton .sapMBtnInner {
+    width: 3rem !important;
+    height: 2rem !important;
+    padding: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
