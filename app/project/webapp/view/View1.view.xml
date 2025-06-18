@@ -28,6 +28,43 @@
                     </HBox>                    
                 </HBox>
             </VBox>
+            <HBox wrap="Wrap" class="cardContainer" justifyContent="Start">
+                <VBox class="groceryCard" width="10em" height="10rem">
+                    <Image src="images/img2.png" densityAware="false"/>
+                    
+                </VBox>
+                <VBox class="groceryCard" width="10em" height="10rem">
+                    <Image src="images/img1.png" densityAware="false"/>
+                    
+                </VBox>
+                <VBox class="groceryCard" width="10em" height="10rem">
+                    <Image src="images/img3.png" densityAware="false"/>
+                    
+                </VBox>
+                <VBox class="groceryCard" width="10em" height="10rem">
+                    <Image src="images/img4.png" densityAware="false"/>
+                    
+                </VBox>
+                <VBox class="groceryCard" width="10em" height="10rem">
+                    <Image src="images/img5.png" densityAware="false"/>
+                    
+                </VBox>
+                <VBox class="groceryCard" width="10em" height="10rem">
+                    <Image src="images/img6.png" densityAware="false"/>
+                    
+                </VBox>
+                <VBox class="groceryCard" width="10em" height="10rem">
+                    <Image src="images/img7.png" densityAware="false"/>
+                    
+                </VBox>
+                
+
+                
+
+
+                
+
+            </HBox>
         </content>
     </Page>
 </mvc:View>
