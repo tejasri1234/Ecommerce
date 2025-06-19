@@ -30,31 +30,30 @@
             </VBox>
             <HBox wrap="Wrap" class="cardContainer" justifyContent="Start">
                 <VBox class="groceryCard" width="10em" height="10rem">
-                    <Image src="images/img1.png" densityAware="false"/>
+                    <Image src="images/img1.png" densityAware="false" press="onImagePress1"/>                   
+                </VBox>
+                <VBox class="groceryCard" width="10em" height="10rem">
+                    <Image src="images/img2.png" densityAware="false" press="onImagePress2"/>
                     
                 </VBox>
                 <VBox class="groceryCard" width="10em" height="10rem">
-                    <Image src="images/img2.png" densityAware="false"/>
+                    <Image src="images/img3.png" densityAware="false" press="onImagePress3"/>
                     
                 </VBox>
                 <VBox class="groceryCard" width="10em" height="10rem">
-                    <Image src="images/img3.png" densityAware="false"/>
+                    <Image src="images/img4.png" densityAware="false" press="onImagePress4"/>
                     
                 </VBox>
                 <VBox class="groceryCard" width="10em" height="10rem">
-                    <Image src="images/img4.png" densityAware="false"/>
+                    <Image src="images/img5.png" densityAware="false" press="onImagePress5"/>
                     
                 </VBox>
                 <VBox class="groceryCard" width="10em" height="10rem">
-                    <Image src="images/img9.png" densityAware="false"/>
+                    <Image src="images/img6.png" densityAware="false" press="onImagePress6"/>
                     
                 </VBox>
                 <VBox class="groceryCard" width="10em" height="10rem">
-                    <Image src="images/img6.png" densityAware="false"/>
-                    
-                </VBox>
-                <VBox class="groceryCard" width="10em" height="10rem">
-                    <Image src="images/img12.png" densityAware="false"/>
+                    <Image src="images/img7.png" densityAware="false" press="onImagePress7"/>
                     
                 </VBox>
             </HBox>
@@ -68,6 +67,16 @@
                 <Image src="images/banner.png" alt="Special Offer" densityAware="false" class="bannerImage"/>
 
             </HBox>
+            <VBox class="customFooter">
+                <HBox class="footerContent" >
+                    <Label class="footerText" text="© 2025 YourCompany. All rights reserved." />
+                    <HBox class="footerLinks" >
+                        <Link class="footerLink" text="Privacy Policy" href="/privacy" />
+                        <Link class="footerLink" text="Terms of Service" href="/terms" />
+                        <Link class="footerLink" text="Contact Us" href="/contact" />
+                    </HBox>
+                </HBox>
+            </VBox>
         </content>
     </Page>
 </mvc:View>

@@ -116,10 +116,46 @@
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     object-fit: cover;
 }
+
 .customLabel {
     padding-top: 16px;
     font-weight: bold;
     font-size: 16px;
     color: #333;
-  }
-  
+}
+
+.customFooter {
+    background-color: white;
+    margin-top: 2rem;
+    font-family: Arial, sans-serif;
+}
+
+.footerContent {
+    padding:30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 3rem;
+    width: 100%;
+}
+
+.footerText {
+    font-size: 1rem;
+    font-weight: bolder;
+}
+
+.footerLinks {
+    display: flex;
+    gap: 1rem;
+}
+
+.footerLink {
+    color: #248ba5;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.footerLink:hover {
+    color: #3498db;
+}
