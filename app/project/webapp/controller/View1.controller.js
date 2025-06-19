@@ -70,7 +70,12 @@ sap.ui.define([
             });
           
             oDialog.open();
-          }
+          },
+          onImagePress1: function () {
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("fruitVegetable"); // 'fruitVegetable' is the route name
+        }
+        
           
 
 

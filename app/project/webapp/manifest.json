@@ -98,13 +98,25 @@
           "target": [
             "TargetView1"
           ]
+        },
+        {
+          "name": "fruitVegetable",
+          "pattern": "fruitVegetable",
+          "target": [
+            "fruitVegetableTarget"
+          ]
         }
       ],
       "targets": {
         "TargetView1": {
           "id": "View1",
           "name": "View1"
+        },
+        "fruitVegetableTarget" : {
+          "id": "fruitVegetable",
+          "name": "fruitVegetable"
         }
+
       }
     },
     "rootView": {
