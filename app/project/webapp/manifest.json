@@ -106,6 +106,48 @@
           "target": [
             "fruitVegetableTarget"
           ]
+        },
+        {
+          "name": "attarice",
+          "pattern": "attarice",
+          "target": [
+            "attarice"
+          ]
+        },
+        {
+          "name": "sweet",
+          "pattern": "sweet",
+          "target": [
+            "sweet"
+          ]
+        },
+        {
+          "name": "dairy",
+          "pattern": "dairy",
+          "target": [
+            "dairy"
+          ]
+        },
+        {
+          "name": "packed",
+          "pattern": "packed",
+          "target": [
+            "packed"
+          ]
+        },
+        {
+          "name": "cooldrinks",
+          "pattern": "cooldrinks",
+          "target": [
+            "cooldrinks"
+          ]
+        },
+        {
+          "name": "teacoffe",
+          "pattern": "teacoffe",
+          "target": [
+            "teacoffe"
+          ]
         }
       ],
       "targets": {
@@ -116,6 +158,30 @@
         "fruitVegetableTarget" : {
           "id": "fruitVegetable",
           "name": "fruitVegetable"
+        },
+        "attarice" : {
+          "id": "attarice",
+          "name": "attarice"
+        },
+        "sweet" : {
+          "id": "sweet",
+          "name": "sweet"
+        },
+        "dairy" : {
+          "id": "dairy",
+          "name": "dairy"
+        },
+        "packed" : {
+          "id": "packed",
+          "name": "packed"
+        },
+        "cooldrinks" : {
+          "id": "cooldrinks",
+          "name": "cooldrinks"
+        },
+        "teacoffe" : {
+          "id": "teacoffe",
+          "name": "teacoffe"
         }
 
       }

@@ -74,7 +74,30 @@ sap.ui.define([
           onImagePress1: function () {
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("fruitVegetable"); // 'fruitVegetable' is the route name
-        }
+          },
+            onImagePress2: function () {
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("attarice"); // 'fruitVegetable' is the route name
+          },
+          onImagePress3: function () {
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("sweet"); // 'fruitVegetable' is the route name
+          },
+          onImagePress4: function () {
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("dairy"); // 'fruitVegetable' is the route name
+          },
+          onImagePress5: function () {
+          var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+          oRouter.navTo("packed"); // 'fruitVegetable' is the route name
+          },
+          onImagePress6: function () {
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("cooldrinks"); // 'fruitVegetable' is the route name
+            },onImagePress7: function () {
+              var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+              oRouter.navTo("teacoffe"); // 'fruitVegetable' is the route name
+              },
         
           
 
