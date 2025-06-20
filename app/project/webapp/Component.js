@@ -12,15 +12,20 @@ sap.ui.define([
             ]
         },
 
-        init() {
-            // call the base component's init function
+        init: function () {
+            // Call the base component's init function
             UIComponent.prototype.init.apply(this, arguments);
-
-            // set the device model
+        
+            // Set the device model
             this.setModel(models.createDeviceModel(), "device");
-
-            // enable routing
+        
+            // Create and set global cart model
+            var cartModel = new sap.ui.model.json.JSONModel({ items: [] });
+            this.setModel(cartModel, "cartModel");
+        
+            // Enable routing
             this.getRouter().initialize();
         }
+        
     });
 });

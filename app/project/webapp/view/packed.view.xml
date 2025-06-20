@@ -1,24 +1,30 @@
 <mvc:View controllerName="project.controller.packed"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
-    <Page id="page7">
+    <Page id="page7" showHeader="false">
         <content>
             <VBox class="customNavBar">
-                <HBox alignItems="Center" justifyContent="SpaceBetween" height="3rem" width="100%">                   
+                <HBox alignItems="Center" justifyContent="SpaceBetween" height="3rem" width="100%">
+                    
+                    <!-- Left Section: Menu + Logo -->
                     <HBox alignItems="Center" class="leftSection" width="20%">
-                        <Button icon="sap-icon://menu" press="onMenuPress" class="largeIconButton"/>
+                        <Button icon="sap-icon://menu" press="onMenuPress" class="largeIconButton" type="Transparent"/>
                         <HBox alignItems="Center" class="logoBox">
                             <Text text="Fresh" class="freshText"/>
                             <Text text="Mart" class="martText"/>
                         </HBox>
                     </HBox>
+
+                    <!-- Middle Section: Search -->
                     <HBox width="50%" class="searchBox" alignItems="Center">
                         <SearchField placeholder="Search groceries..." width="120%" liveChange="onSearch"/>
-                    </HBox>                            
+                    </HBox>
+
+                    <!-- Right Section: Icons -->
                     <HBox alignItems="Center" justifyContent="End" width="20%" class="rightIcons">
-                        <Button icon="sap-icon://customer" press="onProfilePress" class="largeIconButton"/>
-                        <Button icon="sap-icon://heart" press="onWishlistPress" class="largeIconButton"/>
-                        <Button icon="sap-icon://cart" press="onCartPress" class="largeIconButton"/>
+                        <Button icon="sap-icon://customer" press="onProfilePress" class="largeIconButton" type="Transparent"/>
+                        <Button icon="sap-icon://heart" press="onWishlistPress" class="largeIconButton" type="Transparent"/>
+                        <Button icon="sap-icon://cart" press="onCartPress" class="largeIconButton" type="Transparent"/>
                     </HBox>                    
                 </HBox>
             </VBox>
