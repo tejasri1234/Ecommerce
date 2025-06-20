@@ -3,28 +3,25 @@ sap.ui.define([
 ], (Controller) => {
     "use strict";
 
-    return Controller.extend("project.controller.View1", {
-        onInit() {
-            var oModel = this.getOwnerComponent().getModel(); // OData V4 model
-            this.getView().setModel(oModel);
+    return Controller.extend("project.controller.teacoffe", {
+        onAfterRendering: function() {
+            var view = this.getView(); 
         
-            // Apply filters directly
-            var fruitFilter = new sap.ui.model.Filter("category/name", "EQ", "Fruit");
-            var vegetableFilter = new sap.ui.model.Filter("category/name", "EQ", "Vegetable");
+            var teaList = view.byId("teaList");
+            var coffeeList = view.byId("coffeeList");
         
-            var fruitList = this.getView().byId("fruitList");
-            var vegetableList = this.getView().byId("vegetableList");
+            var teaFilter = new sap.ui.model.Filter("category/name", "EQ", "Tea");
+            var coffeeFilter = new sap.ui.model.Filter("category/name", "EQ", "Coffee");
         
-            // Check if bindings exist before filtering
-            if (fruitList.getBinding("items")) {
-                fruitList.getBinding("items").filter([fruitFilter]);
+            if (teaList?.getBinding("items")) {
+                teaList.getBinding("items").filter([teaFilter]);
             }
         
-            if (vegetableList.getBinding("items")) {
-                vegetableList.getBinding("items").filter([vegetableFilter]);
+            if (coffeeList?.getBinding("items")) {
+                coffeeList.getBinding("items").filter([coffeeFilter]);
             }
         }
-               
+          
 
     });
 })

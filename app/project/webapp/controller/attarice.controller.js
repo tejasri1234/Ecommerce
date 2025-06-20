@@ -3,28 +3,25 @@ sap.ui.define([
 ], (Controller) => {
     "use strict";
 
-    return Controller.extend("project.controller.View1", {
-        onInit() {
-            var oModel = this.getOwnerComponent().getModel(); // OData V4 model
-            this.getView().setModel(oModel);
+    return Controller.extend("project.controller.attarice", {
+        onAfterRendering: function () {
+            var grainsList = this.getView().byId("grainsList");
+            var essentialsList = this.getView().byId("essentialsList");
         
-            // Apply filters directly
-            var fruitFilter = new sap.ui.model.Filter("category/name", "EQ", "Fruit");
-            var vegetableFilter = new sap.ui.model.Filter("category/name", "EQ", "Vegetable");
+            var grainsFilter = new sap.ui.model.Filter("category/name", "EQ", "Grains");
+            var essentialsFilter = new sap.ui.model.Filter("category/name", "EQ", "Essentials");
         
-            var fruitList = this.getView().byId("fruitList");
-            var vegetableList = this.getView().byId("vegetableList");
-        
-            // Check if bindings exist before filtering
-            if (fruitList.getBinding("items")) {
-                fruitList.getBinding("items").filter([fruitFilter]);
+            if (grainsList && grainsList.getBinding("items")) {
+                grainsList.getBinding("items").filter([grainsFilter]);
             }
         
-            if (vegetableList.getBinding("items")) {
-                vegetableList.getBinding("items").filter([vegetableFilter]);
+            if (essentialsList && essentialsList.getBinding("items")) {
+                essentialsList.getBinding("items").filter([essentialsFilter]);
             }
         }
-               
+        
+
+
 
     });
 })

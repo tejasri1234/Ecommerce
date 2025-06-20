@@ -22,7 +22,6 @@ entity Product {
     price          : Integer;
     quantity        : String;
     stock          : Integer;
-    image          : String;
     category       : Association to Category;
 }
 

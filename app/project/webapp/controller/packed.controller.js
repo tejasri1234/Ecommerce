@@ -3,27 +3,25 @@ sap.ui.define([
 ], (Controller) => {
     "use strict";
 
-    return Controller.extend("project.controller.View1", {
-        onInit() {
-            var oModel = this.getOwnerComponent().getModel(); // OData V4 model
-            this.getView().setModel(oModel);
+    return Controller.extend("project.controller.packed", {
+        onAfterRendering: function() {
+            var view = this.getView(); 
         
-            // Apply filters directly
-            var fruitFilter = new sap.ui.model.Filter("category/name", "EQ", "Fruit");
-            var vegetableFilter = new sap.ui.model.Filter("category/name", "EQ", "Vegetable");
+            var breakfastList = view.byId("breakfastList");
+            var noodlesList = view.byId("noodlesList");
         
-            var fruitList = this.getView().byId("fruitList");
-            var vegetableList = this.getView().byId("vegetableList");
+            var breakfastFilter = new sap.ui.model.Filter("category/name", "EQ", "Breakfast Instant");
+            var noodlesFilter = new sap.ui.model.Filter("category/name", "EQ", "Instant Noodles");
         
-            // Check if bindings exist before filtering
-            if (fruitList.getBinding("items")) {
-                fruitList.getBinding("items").filter([fruitFilter]);
+            if (breakfastList?.getBinding("items")) {
+                breakfastList.getBinding("items").filter([breakfastFilter]);
             }
         
-            if (vegetableList.getBinding("items")) {
-                vegetableList.getBinding("items").filter([vegetableFilter]);
+            if (noodlesList?.getBinding("items")) {
+                noodlesList.getBinding("items").filter([noodlesFilter]);
             }
         }
+        
                
 
     });

@@ -1,7 +1,7 @@
-<mvc:View controllerName="project.controller.fruitVegetable"
+<mvc:View controllerName="project.controller.dairy"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
-    <Page id="page2">
+    <Page id="page5">
         <content>
             <VBox class="customNavBar">
                 <HBox alignItems="Center" justifyContent="SpaceBetween" height="3rem" width="100%">                   
@@ -24,14 +24,12 @@
             </VBox>
 
             <VBox class="mainContainer">          
-                <Title text="Fruits &amp; Vegetables" level="H1" textAlign="Center" />
-                <!-- Fruits Section -->
-                <HBox id="fruitList" wrap="Wrap" class="HSection" justifyContent="Start" items="{/Product}">
+                <Title text="Dairy &amp; Eggs" level="H2" textAlign="Center" />
+                <HBox id="dairyEggsList" wrap="Wrap" class="HSection" justifyContent="Start" items="{/Product}">
                     <items>
                         <VBox>
                             <VBox class="itemCard">
-                                <Image src="images/Banana.png
-                                " width="100%" />
+                                <Image src="images/Banana.png" width="100%" />
                             </VBox>
                             <VBox class="itemText">
                                 <Text text="{name}" class="itemName" />
@@ -43,12 +41,13 @@
                     </items>
                 </HBox>
 
-                <!-- Vegetables Section -->
-                <HBox id="vegetableList" wrap="Wrap" class="HSection" justifyContent="Start" items="{/Product}">
+                <!-- Breads Section -->
+                <Title text="Breads" level="H2" textAlign="Center" />
+                <HBox id="breadsList" wrap="Wrap" class="HSection" justifyContent="Start" items="{/Product}">
                     <items>
                         <VBox>
                             <VBox class="itemCard">
-                                <Image src="images/Potato.png" width="100%" /> 
+                                <Image src="images/Banana.png" width="100%" />
                             </VBox>
                             <VBox class="itemText">
                                 <Text text="{name}" class="itemName" />
@@ -59,8 +58,6 @@
                         </VBox>
                     </items>
                 </HBox>
-
-
             </VBox>       
         </content>
     </Page>

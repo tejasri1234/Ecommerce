@@ -3,28 +3,27 @@ sap.ui.define([
 ], (Controller) => {
     "use strict";
 
-    return Controller.extend("project.controller.View1", {
-        onInit() {
-            var oModel = this.getOwnerComponent().getModel(); // OData V4 model
-            this.getView().setModel(oModel);
-        
-            // Apply filters directly
-            var fruitFilter = new sap.ui.model.Filter("category/name", "EQ", "Fruit");
-            var vegetableFilter = new sap.ui.model.Filter("category/name", "EQ", "Vegetable");
-        
-            var fruitList = this.getView().byId("fruitList");
-            var vegetableList = this.getView().byId("vegetableList");
-        
+    return Controller.extend("project.controller.sweet", {
+        onAfterRendering: function() {
+            var view = this.getView(); 
+
+            var chocolatesList = view.byId("chocolatesList");
+            var iceCreamList = view.byId("iceCreamList");
+
+            var chocolatesFilter = new sap.ui.model.Filter("category/name", "EQ", "Chocolates & Sweets");
+            var iceCreamFilter = new sap.ui.model.Filter("category/name", "EQ", "Ice Creams");
             // Check if bindings exist before filtering
-            if (fruitList.getBinding("items")) {
-                fruitList.getBinding("items").filter([fruitFilter]);
+
+            if (chocolatesList && chocolatesList.getBinding("items")) {
+                chocolatesList.getBinding("items").filter([chocolatesFilter]);
             }
-        
-            if (vegetableList.getBinding("items")) {
-                vegetableList.getBinding("items").filter([vegetableFilter]);
+
+            if (iceCreamList && iceCreamList.getBinding("items")) {
+                iceCreamList.getBinding("items").filter([iceCreamFilter]);
             }
+
         }
-               
+
 
     });
 })

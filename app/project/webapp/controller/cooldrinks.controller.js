@@ -3,27 +3,25 @@ sap.ui.define([
 ], (Controller) => {
     "use strict";
 
-    return Controller.extend("project.controller.View1", {
-        onInit() {
-            var oModel = this.getOwnerComponent().getModel(); // OData V4 model
-            this.getView().setModel(oModel);
+    return Controller.extend("project.controller.cooldrinks", {
+        onAfterRendering: function() {
+            var view = this.getView(); 
+            
+            var softDrinksList = view.byId("softDrinksList");
+            var fruitJuicesList = view.byId("fruitJuicesList");
         
-            // Apply filters directly
-            var fruitFilter = new sap.ui.model.Filter("category/name", "EQ", "Fruit");
-            var vegetableFilter = new sap.ui.model.Filter("category/name", "EQ", "Vegetable");
+            var softDrinksFilter = new sap.ui.model.Filter("category/name", "EQ", "Soft Drinks");
+            var fruitJuicesFilter = new sap.ui.model.Filter("category/name", "EQ", "Fruit Juices");
         
-            var fruitList = this.getView().byId("fruitList");
-            var vegetableList = this.getView().byId("vegetableList");
-        
-            // Check if bindings exist before filtering
-            if (fruitList.getBinding("items")) {
-                fruitList.getBinding("items").filter([fruitFilter]);
+            if (softDrinksList?.getBinding("items")) {
+                softDrinksList.getBinding("items").filter([softDrinksFilter]);
             }
         
-            if (vegetableList.getBinding("items")) {
-                vegetableList.getBinding("items").filter([vegetableFilter]);
+            if (fruitJuicesList?.getBinding("items")) {
+                fruitJuicesList.getBinding("items").filter([fruitJuicesFilter]);
             }
         }
+        
                
 
     });

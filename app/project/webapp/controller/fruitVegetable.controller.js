@@ -3,7 +3,7 @@ sap.ui.define([
 ], (Controller) => {
     "use strict";
 
-    return Controller.extend("project.controller.View1", {
+    return Controller.extend("project.controller.fruitVegetable", {
         onInit() {
             var oModel = this.getOwnerComponent().getModel(); // OData V4 model
             this.getView().setModel(oModel);

@@ -1,7 +1,31 @@
-id,name,price,quantity,stock,category_name,image
-d2081e75-728f-46c8-953b-ace972219571,Bananas,199,1kg,100,Fruit,https://cdn.zeptonow.com/production/ik-seo/tr:w-400,ar-3000-3000,pr-true,f-auto,q-80/cms/product_variant/b9dfa7ca-7eef-46ea-b198-5c57160461fd/Banana-Robusta.jpeg
-e408a381-90e9-4dec-8bb7-2e81faa14f84,Potato,40,150g,200,Vegetable,https://cdn.zeptonow.com/production/tr:w-1280,ar-3000-3000,pr-true,f-auto,q-80/cms/product_variant/ea985904-8fcb-492c-b782-a0509df2828b.jpeg
-f1a2b3c4-1111-2222-3333-444455556666,Pomegranate,120,500g,80,Fruit,https://cdn.zeptonow.com/production/ik-seo/tr:w-400,ar-3000-3000,pr-true,f-auto,q-80/cms/product_variant/36c17a47-dcff-4719-ba2f-a648f84f810d/Pomegranate.jpeg
-a7b8c9d0-7777-8888-9999-000011112222,Pineapple,80,1 piece,60,Fruit,https://cdn.zeptonow.com/production/ik-seo/tr:w-400,ar-3000-3000,pr-true,f-auto,q-80/cms/product_variant/744ea14d-7cdc-4267-8b63-3c5c539978f9/Pineapple-Ananas-Semi-Ripe.jpeg
-b3c4d5e6-3333-4444-5555-666677778888,Watermelon,150,1 piece,50,Fruit,https://cdn.zeptonow.com/production/ik-seo/tr:w-400,ar-3000-3000,pr-true,f-auto,q-80/cms/product_variant/2216ac1a-24dd-414e-97a8-2417ef67afd4/Watermelon-Kiran-Tarbooj-.jpeg
-c9d0e1f2-9999-0000-1111-222233334444,Mango,100,1kg,90,Fruit,https://cdn.zeptonow.com/production/ik-seo/tr:w-400,ar-500-500,pr-true,f-auto,q-80/inventory/product/65299269-1dec-48c8-a4f0-eb46e89a0243-288d8491-ad2d-4c6c-84f0-a580085f830d/Mango-Badami-South-Alphonso.jpeg
+id,name,price,quantity,stock,category_name
+d2081e75-728f-46c8-953b-ace972219571,Bananas,199,1kg,100,Fruit
+e408a381-90e9-4dec-8bb7-2e81faa14f84,Potato,40,150g,200,Vegetable
+f1a2b3c4-1111-2222-3333-444455556666,Pomegranate,120,500g,80,Fruit
+a7b8c9d0-7777-8888-9999-000011112222,Pineapple,80,1 piece,60,Fruit
+b3c4d5e6-3333-4444-5555-666677778888,Watermelon,150,1 piece,50,Fruit
+c9d0e1f2-9999-0000-1111-222233334444,Mango,100,1kg,90,Fruit
+d1e2f3a4-b111-2222-c333-444455556677,Atta,60,5kg,150,Grains
+e2f3a4b5-c222-3333-d444-555566667788,Rice,80,5kg,180,Grains
+f3a4b5c6-d333-4444-e555-666677778899,Sunflower Oil,130,1L,120,Essentials
+g4b5c6d7-e444-5555-f666-777788889900,Toor Dal,110,1kg,140,Essentials
+h5c6d7e8-f555-6666-a777-888899990000,Coca Cola,45,500ml,200,Soft Drinks
+i6d7e8f9-a666-7777-b888-999900001111,Pepsi,40,500ml,180,Soft Drinks
+j7e8f9a0-b777-8888-c999-000011112222,Slice Mango Juice,30,250ml,150,Fruit Juices
+k8f9a0b1-c888-9999-d000-111122223333,Real Orange Juice,60,1L,100,Fruit Juices
+l9a0b1c2-d999-0000-e111-222233334444,Milk,55,1L,200,Dairy & Eggs
+m0b1c2d3-e000-1111-f222-333344445555,Eggs,70,12 pieces,180,Dairy & Eggs
+n1c2d3e4-f111-2222-a333-444455556666,Brown Bread,35,400g,160,Breads
+o2d3e4f5-a222-3333-b444-555566667777,White Bread,30,400g,170,Breads
+p3e4f5a6-b333-4444-c555-666677778888,Oats,90,500g,130,Breakfast Instant
+q4f5a6b7-c444-5555-d666-777788889999,Cornflakes,85,500g,140,Breakfast Instant
+r5a6b7c8-d555-6666-e777-888899990000,Maggi Noodles,12,70g,300,Instant Noodles
+s6b7c8d9-e666-7777-f888-999900001111,Yippee Noodles,15,70g,250,Instant Noodles
+t7c8d9e0-f777-8888-a999-000011112222,Dairy Milk,40,50g,220,Chocolates & Sweets
+u8d9e0f1-a888-9999-b000-111122223333,KitKat,30,40g,210,Chocolates & Sweets
+v9e0f1a2-b999-0000-c111-222233334444,Vadilal Ice Cream,60,100ml,190,Ice Creams
+w0f1a2b3-c000-1111-d222-333344445555,Amul Ice Cream,70,100ml,180,Ice Creams
+x1a2b3c4-d111-2222-e333-444455556666,Tata Tea,120,500g,160,Tea
+y2b3c4d5-e222-3333-f444-555566667777,Brooke Bond Red Label,110,500g,150,Tea
+z3c4d5e6-f333-4444-a555-666677778888,Nescafe Classic,150,100g,140,Coffee
+a4d5e6f7-a444-5555-b666-777788889999,Bru Instant,130,100g,130,Coffee
