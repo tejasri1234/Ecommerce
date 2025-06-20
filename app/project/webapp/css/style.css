@@ -70,6 +70,11 @@
     transform: scale(1.03);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
+.groceryCard img:focus {
+    outline: none;
+    border: none;
+}
+
 
 /* Image styling */
 .groceryCard img.sapMImg {
@@ -175,8 +180,7 @@
 }
 
 /* Section layout */
-.fruitSection,
-.vegetableSection {
+.HSection {
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;

@@ -1,3 +1,7 @@
-id,name,description,price,stock,unit,category_id
-d2081e75-728f-46c8-953b-ace972219571,Bananas,Fresh bananas,199,100,kg,d6551c0f-b972-4a26-8e52-786efc185dfb
-e408a381-90e9-4dec-8bb7-2e81faa14f84,Instant Noodles,Packaged noodles,49,200,pack,a7563498-ee36-43bf-bd40-58094f225cea
+id,name,price,quantity,stock,category_name,image
+d2081e75-728f-46c8-953b-ace972219571,Bananas,199,1kg,100,Fruit,https://cdn.zeptonow.com/production/ik-seo/tr:w-400,ar-3000-3000,pr-true,f-auto,q-80/cms/product_variant/b9dfa7ca-7eef-46ea-b198-5c57160461fd/Banana-Robusta.jpeg
+e408a381-90e9-4dec-8bb7-2e81faa14f84,Potato,40,150g,200,Vegetable,https://cdn.zeptonow.com/production/tr:w-1280,ar-3000-3000,pr-true,f-auto,q-80/cms/product_variant/ea985904-8fcb-492c-b782-a0509df2828b.jpeg
+f1a2b3c4-1111-2222-3333-444455556666,Pomegranate,120,500g,80,Fruit,https://cdn.zeptonow.com/production/ik-seo/tr:w-400,ar-3000-3000,pr-true,f-auto,q-80/cms/product_variant/36c17a47-dcff-4719-ba2f-a648f84f810d/Pomegranate.jpeg
+a7b8c9d0-7777-8888-9999-000011112222,Pineapple,80,1 piece,60,Fruit,https://cdn.zeptonow.com/production/ik-seo/tr:w-400,ar-3000-3000,pr-true,f-auto,q-80/cms/product_variant/744ea14d-7cdc-4267-8b63-3c5c539978f9/Pineapple-Ananas-Semi-Ripe.jpeg
+b3c4d5e6-3333-4444-5555-666677778888,Watermelon,150,1 piece,50,Fruit,https://cdn.zeptonow.com/production/ik-seo/tr:w-400,ar-3000-3000,pr-true,f-auto,q-80/cms/product_variant/2216ac1a-24dd-414e-97a8-2417ef67afd4/Watermelon-Kiran-Tarbooj-.jpeg
+c9d0e1f2-9999-0000-1111-222233334444,Mango,100,1kg,90,Fruit,https://cdn.zeptonow.com/production/ik-seo/tr:w-400,ar-500-500,pr-true,f-auto,q-80/inventory/product/65299269-1dec-48c8-a4f0-eb46e89a0243-288d8491-ad2d-4c6c-84f0-a580085f830d/Mango-Badami-South-Alphonso.jpeg

@@ -11,18 +11,18 @@ entity Customer {
 }
 
 entity Category {
-    key id         : UUID;
-    name           : String(100);
+    id         : UUID;
+    key name       : String(100);
     description    : String(255);
 }
 
 entity Product {
     key id         : UUID;
     name           : String(100);
-    description    : String(255);
     price          : Integer;
+    quantity        : String;
     stock          : Integer;
-    unit           : String(20);
+    image          : String;
     category       : Association to Category;
 }
 
@@ -39,6 +39,6 @@ entity OrderItem {
     key id         : UUID;
     order          : Association to Order;
     product        : Association to Product;
-    quantity       : Integer;
+    unit           : Integer;
     price          : Integer;
 }

@@ -1,7 +1,7 @@
 
 using { ecommerce as e } from '../db/dataModel';
 
-service CatalogService @(path: '/catalog') {
+service CatalogService {
   entity Customer as projection on e.Customer;
   entity Category as projection on e.Category;
   entity Product as projection on e.Product;
