@@ -3,10 +3,9 @@
     xmlns="sap.m">
     <Page id="page7" showHeader="false">
         <content>
+            <!-- Navigation Bar -->
             <VBox class="customNavBar">
                 <HBox alignItems="Center" justifyContent="SpaceBetween" height="3rem" width="100%">
-                    
-                    <!-- Left Section: Menu + Logo -->
                     <HBox alignItems="Center" class="leftSection" width="20%">
                         <Button icon="sap-icon://menu" press="onMenuPress" class="largeIconButton" type="Transparent"/>
                         <HBox alignItems="Center" class="logoBox">
@@ -14,29 +13,25 @@
                             <Text text="Mart" class="martText"/>
                         </HBox>
                     </HBox>
-
-                    <!-- Middle Section: Search -->
                     <HBox width="50%" class="searchBox" alignItems="Center">
                         <SearchField placeholder="Search groceries..." width="120%" liveChange="onSearch"/>
                     </HBox>
-
-                    <!-- Right Section: Icons -->
                     <HBox alignItems="Center" justifyContent="End" width="20%" class="rightIcons">
                         <Button icon="sap-icon://customer" press="onProfilePress" class="largeIconButton" type="Transparent"/>
                         <Button icon="sap-icon://heart" press="onWishlistPress" class="largeIconButton" type="Transparent"/>
                         <Button icon="sap-icon://cart" press="onCartPress" class="largeIconButton" type="Transparent"/>
-                    </HBox>                    
+                    </HBox>
                 </HBox>
             </VBox>
 
-            <VBox class="mainContainer">          
-                <!-- Breakfast Instant Section -->
+            <!-- Product Sections -->
+            <VBox class="mainContainer">
                 <Title text="Breakfast Instant" level="H2" textAlign="Center" />
                 <HBox id="breakfastList" wrap="Wrap" class="HSection" justifyContent="Start" items="{/Product}">
                     <items>
                         <VBox>
                             <VBox class="itemCard">
-                                <Image src="images/Banana.png" width="100%" />
+                                <Image src="images/Breakfast.png" width="100%" />
                             </VBox>
                             <VBox class="itemText">
                                 <Text text="{name}" class="itemName" />
@@ -48,13 +43,12 @@
                     </items>
                 </HBox>
 
-                <!-- Instant Noodles Section -->
                 <Title text="Instant Noodles" level="H2" textAlign="Center" />
                 <HBox id="noodlesList" wrap="Wrap" class="HSection" justifyContent="Start" items="{/Product}">
                     <items>
                         <VBox>
                             <VBox class="itemCard">
-                                <Image src="images/Banana.png" width="100%" />
+                                <Image src="images/Noodles.png" width="100%" />
                             </VBox>
                             <VBox class="itemText">
                                 <Text text="{name}" class="itemName" />
@@ -65,11 +59,15 @@
                         </VBox>
                     </items>
                 </HBox>
+            </VBox>
 
-                
-
-
-            </VBox>       
+            <!-- Cart Panel -->
+            <Panel id="cartPanel" class="cartPanel" expandable="false" visible="false" width="30%" height="100%">
+                <Button icon="sap-icon://decline" type="Transparent" press="onCloseCart" class="closeCartButton"/>
+                <VBox id="cartItemsContainer" class="cartItemsContainer" />
+                <Text id="totalPriceText" class="totalPriceText" text="Total: ₹0" />
+                <Button text="Place Order" press="onPlaceOrder" type="Emphasized" class="placeOrderButton" />
+            </Panel>
         </content>
     </Page>
 </mvc:View>

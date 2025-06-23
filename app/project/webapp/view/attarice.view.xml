@@ -1,14 +1,11 @@
-<mvc:View
-    controllerName="project.controller.attarice"
+<mvc:View controllerName="project.controller.attarice"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m"
-> 
-    <Page id="page3" showHeader="false">
+    xmlns="sap.m">
+    <Page id="page6" showHeader="false">
         <content>
+            <!-- Navigation Bar -->
             <VBox class="customNavBar">
                 <HBox alignItems="Center" justifyContent="SpaceBetween" height="3rem" width="100%">
-                    
-                    <!-- Left Section: Menu + Logo -->
                     <HBox alignItems="Center" class="leftSection" width="20%">
                         <Button icon="sap-icon://menu" press="onMenuPress" class="largeIconButton" type="Transparent"/>
                         <HBox alignItems="Center" class="logoBox">
@@ -16,134 +13,61 @@
                             <Text text="Mart" class="martText"/>
                         </HBox>
                     </HBox>
-
-                    <!-- Middle Section: Search -->
                     <HBox width="50%" class="searchBox" alignItems="Center">
                         <SearchField placeholder="Search groceries..." width="120%" liveChange="onSearch"/>
                     </HBox>
-
-                    <!-- Right Section: Icons -->
                     <HBox alignItems="Center" justifyContent="End" width="20%" class="rightIcons">
                         <Button icon="sap-icon://customer" press="onProfilePress" class="largeIconButton" type="Transparent"/>
                         <Button icon="sap-icon://heart" press="onWishlistPress" class="largeIconButton" type="Transparent"/>
                         <Button icon="sap-icon://cart" press="onCartPress" class="largeIconButton" type="Transparent"/>
-                    </HBox>                    
+                    </HBox>
                 </HBox>
             </VBox>
+
+            <!-- Product Sections -->
             <VBox class="mainContainer">
-
-                <Title
-                    text="Grains (Atta &amp; Rice)"
-                    level="H2"
-                    textAlign="Center"
-                />
-
-                <HBox
-                    id="grainsList"
-                    wrap="Wrap"
-                    class="HSection"
-                    justifyContent="Start"
-                    items="{/Product}"
-                >
-
+                <Title text="Grains" level="H2" textAlign="Center" />
+                <HBox id="grainsList" wrap="Wrap" class="HSection" justifyContent="Start" items="{/Product}">
                     <items>
-
                         <VBox>
-
                             <VBox class="itemCard">
-
-                                <Image
-                                    src="{image}"
-                                    width="100%"
-                                />
-
+                                <Image src="images/Rice.png" width="100%" />
                             </VBox>
-
                             <VBox class="itemText">
-
-                                <Text
-                                    text="{name}"
-                                    class="itemName"
-                                />
-
-                                <Text
-                                    text="{quantity}"
-                                    class="itemWeight"
-                                />
-
-                                <Text
-                                    text="₹{price}"
-                                    class="itemPrice"
-                                />
-
-                                <Button
-                                    text="Add to Cart"
-                                    press="onAddToCart"
-                                    class="addtocartButton"
-                                />
-
+                                <Text text="{name}" class="itemName" />
+                                <Text text="{quantity}" class="itemWeight" />
+                                <Text text="₹{price}" class="itemPrice" />
+                                <Button text="Add to Cart" press="onAddToCart" class="addtocartButton"/>
                             </VBox>
-
                         </VBox>
-
                     </items>
-
                 </HBox>
 
-                <HBox
-                    id="essentialsList"
-                    wrap="Wrap"
-                    class="HSection"
-                    justifyContent="Start"
-                    items="{/Product}"
-                >
-
+                <Title text="Essentials" level="H2" textAlign="Center" />
+                <HBox id="essentialsList" wrap="Wrap" class="HSection" justifyContent="Start" items="{/Product}">
                     <items>
-
                         <VBox>
-
                             <VBox class="itemCard">
-
-                                <Image
-                                    src="{image}"
-                                    width="100%"
-                                />
-
+                                <Image src="images/Oil.png" width="100%" />
                             </VBox>
-
                             <VBox class="itemText">
-
-                                <Text
-                                    text="{name}"
-                                    class="itemName"
-                                />
-
-                                <Text
-                                    text="{quantity}"
-                                    class="itemWeight"
-                                />
-
-                                <Text
-                                    text="₹{price}"
-                                    class="itemPrice"
-                                />
-
-                                <Button
-                                    text="Add to Cart"
-                                    press="onAddToCart"
-                                    class="addtocartButton"
-                                />
-
+                                <Text text="{name}" class="itemName" />
+                                <Text text="{quantity}" class="itemWeight" />
+                                <Text text="₹{price}" class="itemPrice" />
+                                <Button text="Add to Cart" press="onAddToCart" class="addtocartButton"/>
                             </VBox>
-
                         </VBox>
-
                     </items>
-
                 </HBox>
-
-
             </VBox>
+
+            <!-- Cart Panel -->
+            <Panel id="cartPanel" class="cartPanel" expandable="false" visible="false" width="30%" height="100%">
+                <Button icon="sap-icon://decline" type="Transparent" press="onCloseCart" class="closeCartButton"/>
+                <VBox id="cartItemsContainer" class="cartItemsContainer" />
+                <Text id="totalPriceText" class="totalPriceText" text="Total: ₹0" />
+                <Button text="Place Order" press="onPlaceOrder" type="Emphasized" class="placeOrderButton" />
+            </Panel>
         </content>
     </Page>
 </mvc:View>

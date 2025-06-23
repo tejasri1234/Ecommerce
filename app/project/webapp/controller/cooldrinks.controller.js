@@ -1,28 +1,126 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller"
-], (Controller) => {
+    "sap/ui/core/mvc/Controller",
+    "sap/ui/model/json/JSONModel",
+    "sap/ui/model/Filter",
+    "sap/m/MessageToast",
+    "sap/m/Text",
+    "sap/m/VBox"
+], function (Controller, JSONModel, Filter, MessageToast, Text, VBox) {
     "use strict";
 
     return Controller.extend("project.controller.cooldrinks", {
-        onAfterRendering: function() {
-            var view = this.getView(); 
-            
-            var softDrinksList = view.byId("softDrinksList");
-            var fruitJuicesList = view.byId("fruitJuicesList");
-        
-            var softDrinksFilter = new sap.ui.model.Filter("category/name", "EQ", "Soft Drinks");
-            var fruitJuicesFilter = new sap.ui.model.Filter("category/name", "EQ", "Fruit Juices");
-        
+        onInit: function () {
+            jQuery.sap.includeStyleSheet("project/css/style.css");
+
+            var oModel = this.getOwnerComponent().getModel();
+            this.getView().setModel(oModel);
+
+            var softDrinksFilter = new Filter("category/name", "EQ", "Soft Drinks");
+            var fruitJuicesFilter = new Filter("category/name", "EQ", "Fruit Juices");
+
+            var softDrinksList = this.getView().byId("softDrinksList");
+            var fruitJuicesList = this.getView().byId("fruitJuicesList");
+
             if (softDrinksList?.getBinding("items")) {
                 softDrinksList.getBinding("items").filter([softDrinksFilter]);
             }
-        
+
             if (fruitJuicesList?.getBinding("items")) {
                 fruitJuicesList.getBinding("items").filter([fruitJuicesFilter]);
             }
-        }
-        
-               
+        },
 
+        updateCartDisplay: function () {
+            var view = this.getView();
+            var cartItemsContainer = view.byId("cartItemsContainer");
+            var totalPriceText = view.byId("totalPriceText");
+
+            cartItemsContainer.removeAllItems();
+
+            var cartModel = this.getOwnerComponent().getModel("cartModel");
+            var cartData = cartModel.getData();
+
+            let total = 0;
+
+            cartData.items.forEach((item, index) => {
+                total += item.price * item.quantity;
+
+                var quantityBox = new sap.m.HBox({
+                    items: [
+                        new sap.m.Button({
+                            icon: "sap-icon://less",
+                            type: "Transparent",
+                            press: () => {
+                                if (item.quantity > 1) {
+                                    item.quantity -= 1;
+                                } else {
+                                    cartData.items.splice(index, 1);
+                                }
+                                cartModel.setProperty("/items", cartData.items);
+                                this.updateCartDisplay();
+                            }
+                        }),
+                        new sap.m.Text({ text: item.quantity.toString() }).addStyleClass("cartItemQuantity"),
+                        new sap.m.Button({
+                            icon: "sap-icon://add",
+                            type: "Transparent",
+                            press: () => {
+                                item.quantity += 1;
+                                cartModel.setProperty("/items", cartData.items);
+                                this.updateCartDisplay();
+                            }
+                        })
+                    ],
+                    alignItems: "Center",
+                    justifyContent: "Center"
+                }).addStyleClass("quantityControlBox");
+
+                var itemBox = new sap.m.VBox({
+                    items: [
+                        new sap.m.Text({ text: item.name }).addStyleClass("cartItemName"),
+                        quantityBox,
+                        new sap.m.Text({ text: "Price: ₹" + item.price }).addStyleClass("cartItemPrice")
+                    ]
+                }).addStyleClass("cartItemBox");
+
+                cartItemsContainer.addItem(itemBox);
+            });
+
+            totalPriceText.setText("Total: ₹" + total.toFixed(2));
+        },
+
+        onCartPress: function () {
+            var view = this.getView();
+            var cartPanel = view.byId("cartPanel");
+
+            cartPanel.setVisible(!cartPanel.getVisible());
+            this.updateCartDisplay();
+        },
+
+        onCloseCart: function () {
+            var cartPanel = this.getView().byId("cartPanel");
+            if (cartPanel) {
+                cartPanel.setVisible(false);
+            }
+        },
+
+        onAddToCart: function (oEvent) {
+            var itemContext = oEvent.getSource().getBindingContext();
+            var itemData = itemContext.getObject();
+
+            var cartModel = this.getOwnerComponent().getModel("cartModel");
+            var cartItems = cartModel.getProperty("/items") || [];
+
+            var existingItem = cartItems.find(item => item.id === itemData.id);
+            if (existingItem) {
+                existingItem.quantity = (parseInt(existingItem.quantity) || 1) + 1;
+            } else {
+                cartItems.push({ ...itemData, quantity: 1 });
+            }
+
+            cartModel.setProperty("/items", cartItems);
+            console.log("Cart Items:", cartItems);
+            MessageToast.show(itemData.name + " added to cart");
+        }
     });
-})
+});

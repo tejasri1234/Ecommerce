@@ -28,6 +28,7 @@
                     </HBox>                    
                 </HBox>
             </VBox>
+            
             <HBox wrap="Wrap" class="cardContainer" justifyContent="Start">
                 <VBox class="groceryCard" width="10em" height="10rem">
                     <Image src="images/img1.png" densityAware="false" press="onImagePress1"/>                   
