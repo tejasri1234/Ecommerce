@@ -10,6 +10,14 @@ sap.ui.define([
 
     return Controller.extend("project.controller.fruitVegetable", {
         onInit: function () {
+            var oView = this.getView();
+            sap.ui.core.Fragment.load({
+                name: "project.view.NavBar",
+                type: "XML",
+                controller: this
+            }).then(function(oFragment){
+                oView.byId("page").addContent(oFragment);
+            });
             // Load custom CSS
             jQuery.sap.includeStyleSheet("project/css/style.css");
 

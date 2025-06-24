@@ -4,25 +4,7 @@
     <Page id="page5" showHeader="false">
         <content>
             <!-- Navigation Bar -->
-            <VBox class="customNavBar">
-                <HBox alignItems="Center" justifyContent="SpaceBetween" height="3rem" width="100%">
-                    <HBox alignItems="Center" class="leftSection" width="20%">
-                        <Button icon="sap-icon://menu" press="onMenuPress" class="largeIconButton" type="Transparent"/>
-                        <HBox alignItems="Center" class="logoBox">
-                            <Text text="Fresh" class="freshText"/>
-                            <Text text="Mart" class="martText"/>
-                        </HBox>
-                    </HBox>
-                    <HBox width="50%" class="searchBox" alignItems="Center">
-                        <SearchField placeholder="Search groceries..." width="120%" liveChange="onSearch"/>
-                    </HBox>
-                    <HBox alignItems="Center" justifyContent="End" width="20%" class="rightIcons">
-                        <Button icon="sap-icon://customer" press="onProfilePress" class="largeIconButton" type="Transparent"/>
-                        <Button icon="sap-icon://heart" press="onWishlistPress" class="largeIconButton" type="Transparent"/>
-                        <Button icon="sap-icon://cart" press="onCartPress" class="largeIconButton" type="Transparent"/>
-                    </HBox>
-                </HBox>
-            </VBox>
+            <core:Fragment fragmentName="project.view.NavBar" type="XML" xmlns:core="sap.ui.core"/>
 
             <!-- Product Sections -->
             <VBox class="mainContainer">
@@ -62,12 +44,8 @@
             </VBox>
 
             <!-- Cart Panel -->
-            <Panel id="cartPanel" class="cartPanel" expandable="false" visible="false" width="30%" height="100%">
-                <Button icon="sap-icon://decline" type="Transparent" press="onCloseCart" class="closeCartButton"/>
-                <VBox id="cartItemsContainer" class="cartItemsContainer" />
-                <Text id="totalPriceText" class="totalPriceText" text="Total: ₹0" />
-                <Button text="Place Order" press="onPlaceOrder" type="Emphasized" class="placeOrderButton" />
-            </Panel>
+          
         </content>
     </Page>
+    <core:Fragment fragmentName="project.view.CartPanel" type="XML" xmlns:core="sap.ui.core"/>
 </mvc:View>

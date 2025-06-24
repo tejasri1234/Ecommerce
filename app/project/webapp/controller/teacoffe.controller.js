@@ -10,6 +10,14 @@ sap.ui.define([
 
     return Controller.extend("project.controller.teacoffe", {
         onInit: function () {
+            var oView = this.getView();
+            sap.ui.core.Fragment.load({
+                name: "project.view.NavBar",
+                type: "XML",
+                controller: this
+            }).then(function(oFragment){
+                oView.byId("page").addContent(oFragment);
+            });
             jQuery.sap.includeStyleSheet("project/css/style.css");
 
             var oModel = this.getOwnerComponent().getModel();
