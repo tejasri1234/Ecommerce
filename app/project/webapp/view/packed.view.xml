@@ -8,12 +8,12 @@
 
             <!-- Product Sections -->
             <VBox class="mainContainer">
-                <Title text="Breakfast Instant" level="H2" textAlign="Center" />
+                <Title text="Breakfast Instant" level="H1" textAlign="Center" />
                 <HBox id="breakfastList" wrap="Wrap" class="HSection" justifyContent="Start" items="{/Product}">
                     <items>
                         <VBox>
                             <VBox class="itemCard">
-                                <Image src="images/Breakfast.png" width="100%" />
+                                <Image src="{image}" width="100%" />
                             </VBox>
                             <VBox class="itemText">
                                 <Text text="{name}" class="itemName" />
@@ -25,12 +25,12 @@
                     </items>
                 </HBox>
 
-                <Title text="Instant Noodles" level="H2" textAlign="Center" />
+                <Title text="Instant Noodles" level="H1" textAlign="Center" />
                 <HBox id="noodlesList" wrap="Wrap" class="HSection" justifyContent="Start" items="{/Product}">
                     <items>
                         <VBox>
                             <VBox class="itemCard">
-                                <Image src="images/Noodles.png" width="100%" />
+                                <Image src="{image}" width="100%" />
                             </VBox>
                             <VBox class="itemText">
                                 <Text text="{name}" class="itemName" />

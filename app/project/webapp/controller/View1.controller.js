@@ -7,14 +7,6 @@ sap.ui.define([
     onInit() {
       var cartModel = new sap.ui.model.json.JSONModel({ items: [] });
       this.getView().setModel(cartModel, "cartModel");
-      var oView = this.getView();
-    sap.ui.core.Fragment.load({
-        name: "project.view.NavBar",
-        type: "XML",
-        controller: this
-    }).then(function(oFragment){
-        oView.byId("page").addContent(oFragment);
-    });
 
     },
 

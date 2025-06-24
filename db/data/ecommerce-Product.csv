@@ -1,22 +1,22 @@
 id,name,price,quantity,stock,category_name,image
-d2081e75-728f-46c8-953b-ace972219571,Bananas,199,1kg,100,Fruit,https://cdn.zeptonow.com/production/tr:w-1280,ar-3000-3000,pr-true,f-auto,q-80/cms/product_variant/b9dfa7ca-7eef-46ea-b198-5c57160461fd.jpeg
-e408a381-90e9-4dec-8bb7-2e81faa14f84,Potato,40,150g,200,Vegetable,https://cdn.zeptonow.com/production/tr:w-1280,ar-3000-3000,pr-true,f-auto,q-80/cms/product_variant/ea985904-8fcb-492c-b782-a0509df2828b.jpeg
-f1a2b3c4-1111-2222-3333-444455556666,Pomegranate,120,500g,80,Fruit,https://cdn.zeptonow.com/production/tr:w-1280,ar-3000-3000,pr-true,f-auto,q-80/cms/product_variant/11cffbb5-0c0d-45f0-98d2-5ca5cf254d02.jpeg
-a7b8c9d0-7777-8888-9999-000011112222,Pineapple,80,1 piece,60,Fruit
-b3c4d5e6-3333-4444-5555-666677778888,Watermelon,150,1 piece,50,Fruit
-c9d0e1f2-9999-0000-1111-222233334444,Mango,100,1kg,90,Fruit
-d1e2f3a4-b111-2222-c333-444455556677,Atta,60,5kg,150,Grains
-e2f3a4b5-c222-3333-d444-555566667788,Rice,80,5kg,180,Grains
-f3a4b5c6-d333-4444-e555-666677778899,Sunflower Oil,130,1L,120,Essentials
-g4b5c6d7-e444-5555-f666-777788889900,Toor Dal,110,1kg,140,Essentials
-h5c6d7e8-f555-6666-a777-888899990000,Coca Cola,45,500ml,200,Soft Drinks
-i6d7e8f9-a666-7777-b888-999900001111,Pepsi,40,500ml,180,Soft Drinks
-j7e8f9a0-b777-8888-c999-000011112222,Slice Mango Juice,30,250ml,150,Fruit Juices
-k8f9a0b1-c888-9999-d000-111122223333,Real Orange Juice,60,1L,100,Fruit Juices
-l9a0b1c2-d999-0000-e111-222233334444,Milk,55,1L,200,Dairy & Eggs
-m0b1c2d3-e000-1111-f222-333344445555,Eggs,70,12 pieces,180,Dairy & Eggs
-n1c2d3e4-f111-2222-a333-444455556666,Brown Bread,35,400g,160,Breads
-o2d3e4f5-a222-3333-b444-555566667777,White Bread,30,400g,170,Breads
+d2081e75-728f-46c8-953b-ace972219571,Bananas,199,1kg,100,Fruit,https://cdn.zeptonow.com/production/tr:w-1280%2Car-3000-3000%2Cpr-true%2Cf-auto%2Cq-80/cms/product_variant/b9dfa7ca-7eef-46ea-b198-5c57160461fd.jpeg
+e408a381-90e9-4dec-8bb7-2e81faa14f84,Potato,40,150g,200,Vegetable,https://cdn.zeptonow.com/production/tr:w-1280%2Car-3000-3000%2Cpr-true%2Cf-auto%2Cq-80/cms/product_variant/ea985904-8fcb-492c-b782-a0509df2828b.jpeg
+f1a2b3c4-1111-2222-3333-444455556666,Pomegranate,120,500g,80,Fruit,https://cdn.zeptonow.com/production/tr:w-1280%2Car-3000-3000%2Cpr-true%2Cf-auto%2Cq-80/cms/product_variant/11cffbb5-0c0d-45f0-98d2-5ca5cf254d02.jpeg
+a7b8c9d0-7777-8888-9999-000011112222,Pineapple,80,1 piece,60,Fruit,
+b3c4d5e6-3333-4444-5555-666677778888,Watermelon,150,1 piece,50,Fruit,https://cdn.zeptonow.com/production/tr:w-1280%2Car-3000-3000%2Cpr-true%2Cf-auto%2Cq-80/cms/product_variant/2216ac1a-24dd-414e-97a8-2417ef67afd4.jpeg
+c9d0e1f2-9999-0000-1111-222233334444,Mango,100,1kg,90,Fruit,https://cdn.zeptonow.com/production/tr:w-1280%2Car-500-500%2Cpr-true%2Cf-auto%2Cq-80/inventory/product/38e844a6-ad10-44b1-86ad-0520f5d62d88-/tmp/20230302-1346011.jpeg
+d1e2f3a4-b111-2222-c333-444455556677,Atta,60,5kg,150,Grains,https://cdn.zeptonow.com/production/tr:w-1280%2Car-1200-1200%2Cpr-true%2Cf-auto%2Cq-80/cms/product_variant/9f97fd13-a517-40c4-b0ff-25cf05a0ac82.jpg
+e2f3a4b5-c222-3333-d444-555566667788,Rice,80,5kg,180,Grains,https://cdn.zeptonow.com/production/tr:w-1280%2Car-1…variant/1d363e1e-13c8-4b7b-97b4-1604d350ad7d.jpeg
+f3a4b5c6-d333-4444-e555-666677778899,Sunflower Oil,130,1L,120,Essentials,https://cdn.zeptonow.com/production/tr:w-1280%2Car-1200-1200%2Cpr-true%2Cf-auto%2Cq-80/cms/product_variant/6be3dade-6631-4414-bf89-95c65296f59b.jpeg
+g4b5c6d7-e444-5555-f666-777788889900,Toor Dal,110,1kg,140,Essentials,https://cdn.zeptonow.com/production/tr:w-1280%2Car-1200-1200%2Cpr-true%2Cf-auto%2Cq-80/cms/product_variant/325f2f8c-b55e-4ea6-a4a1-ca9001dcd940.jpeg
+h5c6d7e8-f555-6666-a777-888899990000,Coca Cola,45,500ml,200,Soft Drinks,https://cdn.zeptonow.com/production/tr:w-1280%2Car-2400-2400%2Cpr-true%2Cf-auto%2Cq-80/cms/product_variant/221420f0-e673-419e-9fb1-acb974557e66.jpeg
+i6d7e8f9-a666-7777-b888-999900001111,Pepsi,40,500ml,180,Soft Drinks,https://cdn.zeptonow.com/production/tr:w-1280%2Car-1200-1200%2Cpr-true%2Cf-auto%2Cq-80/cms/product_variant/7fdbc15f-6f61-4a67-ae75-71dbdd2f8d74.jpeg
+j7e8f9a0-b777-8888-c999-000011112222,Slice Mango Juice,30,250ml,150,Fruit Juices,https://cdn.zeptonow.com/production/tr:w-1280%2Car-1000-1000%2Cpr-true%2Cf-auto%2Cq-80/cms/product_variant/0066b653-68a9-4a37-9b3b-a4c18fcd54bc.jpeg
+k8f9a0b1-c888-9999-d000-111122223333,Real Orange Juice,60,1L,100,Fruit Juices,https://cdn.zeptonow.com/production/tr:w-1280%2Car-2000-2000%2Cpr-true%2Cf-auto%2Cq-80/cms/product_variant/1885ab78-0da6-4334-ab35-13e1fdc41dc1.jpeg
+l9a0b1c2-d999-0000-e111-222233334444,Milk,55,1L,200,Dairy & Eggs,https://cdn.zeptonow.com/production/tr:w-1280%2Car-2400-2400%2Cpr-true%2Cf-auto%2Cq-80/cms/product_variant/7911ebc0-9010-403f-9ed9-a6fc5e080be2.jpeg
+m0b1c2d3-e000-1111-f222-333344445555,Eggs,70,12 pieces,180,Dairy & Eggs,https://cdn.zeptonow.com/production/tr:w-1280%2Car-2400-2400%2Cpr-true%2Cf-auto%2Cq-80/cms/product_variant/540139a7-d722-40b9-ba11-adb0068131b2.jpeg
+n1c2d3e4-f111-2222-a333-444455556666,Brown Bread,35,400g,160,Breads,https://cdn.zeptonow.com/production/tr:w-1280%2Car-1200-1200%2Cpr-true%2Cf-auto%2Cq-80/cms/product_variant/68de0f15-ba46-4a79-95ec-0e2a33ce9dcc.jpeg
+o2d3e4f5-a222-3333-b444-555566667777,White Bread,30,400g,170,Breads,https://cdn.zeptonow.com/production/tr:w-1280%2Car-1200-1200%2Cpr-true%2Cf-auto%2Cq-80/cms/product_variant/1369659e-ffa1-4dbc-b037-6b91e0b59e8f.jpg
 p3e4f5a6-b333-4444-c555-666677778888,Oats,90,500g,130,Breakfast Instant
 q4f5a6b7-c444-5555-d666-777788889999,Cornflakes,85,500g,140,Breakfast Instant
 r5a6b7c8-d555-6666-e777-888899990000,Maggi Noodles,12,70g,300,Instant Noodles

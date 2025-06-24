@@ -8,12 +8,12 @@
 
             <!-- Product Sections -->
             <VBox class="mainContainer">
-                <Title text="Tea" level="H2" textAlign="Center" />
+                <Title text="Tea" level="H1" textAlign="Center" />
                 <HBox id="teaList" wrap="Wrap" class="HSection" justifyContent="Start" items="{/Product}">
                     <items>
                         <VBox>
                             <VBox class="itemCard">
-                                <Image src="images/Tea.png" width="100%" />
+                                <Image src="{image}" width="100%" />
                             </VBox>
                             <VBox class="itemText">
                                 <Text text="{name}" class="itemName" />
@@ -25,12 +25,12 @@
                     </items>
                 </HBox>
 
-                <Title text="Coffee" level="H2" textAlign="Center" />
+                <Title text="Coffee" level="H1" textAlign="Center" />
                 <HBox id="coffeeList" wrap="Wrap" class="HSection" justifyContent="Start" items="{/Product}">
                     <items>
                         <VBox>
                             <VBox class="itemCard">
-                                <Image src="images/Coffee.png" width="100%" />
+                                <Image src="{image}" width="100%" />
                             </VBox>
                             <VBox class="itemText">
                                 <Text text="{name}" class="itemName" />
