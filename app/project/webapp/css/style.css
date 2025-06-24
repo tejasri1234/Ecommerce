@@ -331,14 +331,118 @@
     padding: 10px 0;
     transition: background-color 0.3s ease;
 }
+.placeOrderButton:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+/* Center the login/register box on the page */
 
-.placeOrderButton:hover {
-    background-color: #005bb5;
+.loginContainer {
+    align-items: center;
+    justify-content: center;
+    padding-top: 2 rem !important;
+ 
 }
-.placeOrderButton:focus{
-    border: none;
-    
+ 
+.formBox {
+    width: 370px;
+    height: 500px;
+    transition: opacity 0.4s ease-in-out;
+    background-color: #dbd4ff;
+    padding: 50px;
+    border-radius: 12px;
+    border: 2px solid #eaf1f1;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
+ 
+.fadeIn {
+    animation: fadeIn 0.4s ease-in-out;
+}
+ 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+ 
+    to {
+        opacity: 1;
+    }
+}
+ 
+.logo {
+    display: block;
+    margin: 0 auto 30px;
+    width: 80px;
+    width: 80px;
+}
+ 
+.loginTitle {
+    text-align: center;
+    margin-bottom: 8px;
+    font-size: 18px;
+    font-weight: bold;
+}
+ 
+.inputField {
+    margin-bottom: 8px;
+    height: 2rem;
+    font-size: 0.95rem;
+}
+ 
+.checkbox {
+    margin: 10px 0;
+    font-size: 0.95rem;
+}
+ 
+.loginButton {
+    width: 100%;
+    margin-top: 10px;
+    height: 2.2rem;
+    font-size: 1rem;
+}
+ 
+.link {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+ 
+::placeholder {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #6c757d;
+    font-size: 1rem;
+    opacity: 0.8;
+    /* Slight transparency for a modern touch */
+}
+ 
+.sapUiSmallMargin left-img {
+    padding-left: 0.2rem !important;
+    padding-top: 2 rem !important;
+}
+ 
+.sapUiSmallMargin {
+    height: 20px !important;
+    font-size: 18px !important;
+    padding-left: 0.2rem !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+}
+
+
+
+
+
+
+
+
+
 
 
 

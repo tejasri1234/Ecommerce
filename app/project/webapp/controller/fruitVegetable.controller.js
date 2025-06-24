@@ -4,8 +4,9 @@ sap.ui.define([
     "sap/ui/model/Filter",
     "sap/m/MessageToast",
     "sap/m/Text",
-    "sap/m/VBox"
-], function (Controller, JSONModel, Filter, MessageToast, Text, VBox) {
+    "sap/m/VBox",
+    "sap/m/MessageBox"
+], function (Controller, JSONModel, Filter, MessageToast, Text, VBox,MessageBox) {
     "use strict";
 
     return Controller.extend("project.controller.fruitVegetable", {
@@ -123,8 +124,16 @@ sap.ui.define([
             }
 
             cartModel.setProperty("/items", cartItems);
-            console.log("Cart Items:", cartItems);
             MessageToast.show(itemData.name + " added to cart");
+        },
+        onPlaceOrder: function () {
+            sap.m.MessageBox.success(
+                "Order placed successfully! Your order will be delivered in 10 minutes.",
+                {
+                    title: "Order Successful"
+                }
+            );
+            this.updateCartDisplay();
         }
     });
 });

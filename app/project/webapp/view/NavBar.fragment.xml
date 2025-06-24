@@ -19,4 +19,5 @@
             <Button icon="sap-icon://cart" press="onCartPress" class="largeIconButton" type="Transparent"/>
         </HBox>                    
     </HBox>
+    
 </VBox>
