@@ -23,6 +23,7 @@ entity Product {
     quantity        : String;
     stock          : Integer;
     category       : Association to Category;
+    image          : String;
 }
 
 entity Order {

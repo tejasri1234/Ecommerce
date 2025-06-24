@@ -12,7 +12,7 @@
                     <items>
                         <VBox>
                             <VBox class="itemCard">
-                                <Image src="images/Banana.png
+                                <Image src="${image}
                                 " width="100%" />
                             </VBox>
                             <VBox class="itemText">
