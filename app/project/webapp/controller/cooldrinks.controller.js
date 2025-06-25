@@ -35,60 +35,83 @@ sap.ui.define([
             var view = this.getView();
             var cartItemsContainer = view.byId("cartItemsContainer");
             var totalPriceText = view.byId("totalPriceText");
-
+            var placeOrderButton = view.byId("placeOrderButton"); // Make sure your Place Order button has this ID
+      
             cartItemsContainer.removeAllItems();
-
+      
             var cartModel = this.getOwnerComponent().getModel("cartModel");
             var cartData = cartModel.getData();
-
+      
             let total = 0;
-
+      
+            if (!cartData.items || cartData.items.length === 0) {
+              // Cart is empty
+              cartItemsContainer.addItem(
+                new sap.m.Text({
+                  text: "Your cart is empty. Browse products to add items!",
+                  textAlign: "Center"
+                }).addStyleClass("cartEmptyText")
+              );
+              totalPriceText.setText("");
+              if (placeOrderButton) {
+                placeOrderButton.setVisible(false);
+              }
+              return;
+            }
+      
             cartData.items.forEach((item, index) => {
-                total += item.price * item.quantity;
-
-                var quantityBox = new sap.m.HBox({
-                    items: [
-                        new sap.m.Button({
-                            icon: "sap-icon://less",
-                            type: "Transparent",
-                            press: () => {
-                                if (item.quantity > 1) {
-                                    item.quantity -= 1;
-                                } else {
-                                    cartData.items.splice(index, 1);
-                                }
-                                cartModel.setProperty("/items", cartData.items);
-                                this.updateCartDisplay();
-                            }
-                        }),
-                        new sap.m.Text({ text: item.quantity.toString() }).addStyleClass("cartItemQuantity"),
-                        new sap.m.Button({
-                            icon: "sap-icon://add",
-                            type: "Transparent",
-                            press: () => {
-                                item.quantity += 1;
-                                cartModel.setProperty("/items", cartData.items);
-                                this.updateCartDisplay();
-                            }
-                        })
-                    ],
-                    alignItems: "Center",
-                    justifyContent: "Center"
-                }).addStyleClass("quantityControlBox");
-
-                var itemBox = new sap.m.VBox({
-                    items: [
-                        new sap.m.Text({ text: item.name }).addStyleClass("cartItemName"),
-                        quantityBox,
-                        new sap.m.Text({ text: "Price: ₹" + item.price }).addStyleClass("cartItemPrice")
-                    ]
-                }).addStyleClass("cartItemBox");
-
-                cartItemsContainer.addItem(itemBox);
+              total += item.price * item.quantity;
+      
+              var quantityBox = new sap.m.HBox({
+                items: [
+                  new sap.m.Button({
+                    icon: "sap-icon://less",
+                    type: "Transparent",
+                    press: () => {
+                      if (item.quantity > 1) {
+                        item.quantity -= 1;
+                      } else {
+                        cartData.items.splice(index, 1);
+                      }
+                      cartModel.setProperty("/items", cartData.items);
+                      this.updateCartDisplay();
+                    }
+                  }),
+                  new sap.m.Text({ text: item.quantity.toString() }).addStyleClass("cartItemQuantity"),
+                  new sap.m.Button({
+                    icon: "sap-icon://add",
+                    type: "Transparent",
+                    press: () => {
+                        if (item.quantity < item.stock) {
+                            item.quantity += 1;
+                            cartModel.setProperty("/items", cartData.items);
+                            this.updateCartDisplay();
+                        } else {
+                            sap.m.MessageToast.show("Maximum stock reached for " + item.name + "!");
+                        }
+                    }
+                })
+                ],
+                alignItems: "Center",
+                justifyContent: "Center"
+              }).addStyleClass("quantityControlBox");
+      
+              var itemBox = new sap.m.VBox({
+                items: [
+                  new sap.m.Text({ text: item.name }).addStyleClass("cartItemName"),
+                  quantityBox,
+                  new sap.m.Text({ text: "Price: ₹" + item.price }).addStyleClass("cartItemPrice")
+                ]
+              }).addStyleClass("cartItemBox");
+      
+              cartItemsContainer.addItem(itemBox);
             });
-
+      
             totalPriceText.setText("Total: ₹" + total.toFixed(2));
-        },
+            if (placeOrderButton) {
+              placeOrderButton.setVisible(true);
+            }
+          },
 
         onCartPress: function () {
             var view = this.getView();
@@ -108,20 +131,46 @@ sap.ui.define([
         onAddToCart: function (oEvent) {
             var itemContext = oEvent.getSource().getBindingContext();
             var itemData = itemContext.getObject();
-
+            console.log(itemData);
+        
             var cartModel = this.getOwnerComponent().getModel("cartModel");
             var cartItems = cartModel.getProperty("/items") || [];
-
+        
+            // Ensure stock is present
+            if (typeof itemData.stock !== "number") {
+                sap.m.MessageToast.show("Stock information not available for " + itemData.name + "!");
+                return;
+            }
+        
             var existingItem = cartItems.find(item => item.id === itemData.id);
             if (existingItem) {
+                if (existingItem.quantity >= itemData.stock) {
+                    sap.m.MessageToast.show("Maximum stock reached for " + itemData.name + "!");
+                    return;
+                }
                 existingItem.quantity = (parseInt(existingItem.quantity) || 1) + 1;
             } else {
+                if (itemData.stock < 1) {
+                    sap.m.MessageToast.show("Out of stock for " + itemData.name + "!");
+                    return;
+                }
                 cartItems.push({ ...itemData, quantity: 1 });
             }
-
+        
             cartModel.setProperty("/items", cartItems);
-            console.log("Cart Items:", cartItems);
             MessageToast.show(itemData.name + " added to cart");
-        }
+        },
+        onPlaceOrder: function () {
+          sap.m.MessageBox.success(
+              "Order placed successfully! Your order will be delivered in 10 minutes.",
+              {
+                  title: "Order Successful"
+              }
+          );
+          var cartModel = this.getOwnerComponent().getModel("cartModel");
+          cartModel.setProperty("/items", []); 
+          this.onCloseCart();
+          this.updateCartDisplay();
+      }
     });
 });

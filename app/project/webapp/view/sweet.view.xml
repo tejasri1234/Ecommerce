@@ -19,6 +19,7 @@
                                 <Text text="{name}" class="itemName" />
                                 <Text text="{quantity}" class="itemWeight" />
                                 <Text text="₹{price}" class="itemPrice" />
+                                <Text text="{stock}" visible="false" />
                                 <Button text="Add to Cart" press="onAddToCart" class="addtocartButton" />
                             </VBox>
                         </VBox>
@@ -36,6 +37,7 @@
                                 <Text text="{name}" class="itemName" />
                                 <Text text="{quantity}" class="itemWeight" />
                                 <Text text="₹{price}" class="itemPrice" />
+                                <Text text="{stock}" visible="false" />
                                 <Button text="Add to Cart" press="onAddToCart" class="addtocartButton" />
                             </VBox>
                         </VBox>

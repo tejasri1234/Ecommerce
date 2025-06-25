@@ -17,5 +17,5 @@
         <!-- Cart items will be dynamically added here -->        
     </VBox>
     <Text id="totalPriceText" class="totalPriceText" text="Total: ₹0" />
-    <Button text="Place Order" press="onPlaceOrder" type="Emphasized" class="placeOrderButton" />
+    <Button id="placeOrderButton" text="Place Order" press="onPlaceOrder" type="Emphasized" class="placeOrderButton" />
 </Panel>

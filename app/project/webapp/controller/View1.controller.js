@@ -178,6 +178,7 @@ sap.ui.define([
       var view = this.getView();
       var cartItemsContainer = view.byId("cartItemsContainer");
       var totalPriceText = view.byId("totalPriceText");
+      var placeOrderButton = view.byId("placeOrderButton"); // Make sure your Place Order button has this ID
 
       cartItemsContainer.removeAllItems();
 
@@ -185,6 +186,21 @@ sap.ui.define([
       var cartData = cartModel.getData();
 
       let total = 0;
+
+      if (!cartData.items || cartData.items.length === 0) {
+        // Cart is empty
+        cartItemsContainer.addItem(
+          new sap.m.Text({
+            text: "Your cart is empty. Browse products to add items!",
+            textAlign: "Center"
+          }).addStyleClass("cartEmptyText")
+        );
+        totalPriceText.setText("");
+        if (placeOrderButton) {
+          placeOrderButton.setVisible(false);
+        }
+        return;
+      }
 
       cartData.items.forEach((item, index) => {
         total += item.price * item.quantity;
@@ -209,11 +225,15 @@ sap.ui.define([
               icon: "sap-icon://add",
               type: "Transparent",
               press: () => {
-                item.quantity += 1;
-                cartModel.setProperty("/items", cartData.items);
-                this.updateCartDisplay();
+                  if (item.quantity < item.stock) {
+                      item.quantity += 1;
+                      cartModel.setProperty("/items", cartData.items);
+                      this.updateCartDisplay();
+                  } else {
+                      sap.m.MessageToast.show("Maximum stock reached for " + item.name + "!");
+                  }
               }
-            })
+          })
           ],
           alignItems: "Center",
           justifyContent: "Center"
@@ -231,6 +251,9 @@ sap.ui.define([
       });
 
       totalPriceText.setText("Total: ₹" + total.toFixed(2));
+      if (placeOrderButton) {
+        placeOrderButton.setVisible(true);
+      }
     },
 
     onCartPress: function () {
@@ -246,12 +269,19 @@ sap.ui.define([
       if (cartPanel) {
         cartPanel.setVisible(false);
       }
-    }
-
-
-
-
-
+    },
+    onPlaceOrder: function () {
+      sap.m.MessageBox.success(
+          "Order placed successfully! Your order will be delivered in 10 minutes.",
+          {
+              title: "Order Successful"
+          }
+      );
+      var cartModel = this.getOwnerComponent().getModel("cartModel");
+      cartModel.setProperty("/items", []); 
+      this.onCloseCart();
+      this.updateCartDisplay();
+  }
 
   });
 });
