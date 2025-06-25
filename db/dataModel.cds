@@ -42,3 +42,18 @@ entity OrderItem {
     unit           : Integer;
     price          : Integer;
 }
+
+entity Cart {
+    key id         : UUID;
+    customer       : Association to Customer;
+    createdAt      : DateTime;
+    items          : Composition of many CartItem on items.cart = $self;
+}
+
+entity CartItem {
+    key id         : UUID;
+    cart           : Association to Cart;
+    product        : Association to Product;
+    quantity       : Integer;
+    addedAt        : DateTime;
+}

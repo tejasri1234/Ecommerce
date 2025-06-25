@@ -139,6 +139,11 @@ sap.ui.define([
         oInput.setType(oInput.getType() === "Password" ? "Text" : "Password");
       }
     },
+    onCloseLoginDialog: function () {
+      if (this._oLoginDialog) {
+        this._oLoginDialog.close();
+      }
+    },
 
 
     onImagePress1: function () {
