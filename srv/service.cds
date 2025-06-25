@@ -7,5 +7,6 @@ service CatalogService {
   entity Product as projection on e.Product;
   entity Order as projection on e.Order;
   entity OrderItem as projection on e.OrderItem;
+ 
 
 }

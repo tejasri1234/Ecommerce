@@ -18,7 +18,7 @@ entity Category {
 
 entity Product {
     key id         : UUID;
-    name           : String(100);
+    name           : String;
     price          : Integer;
     quantity        : String;
     stock          : Integer;
@@ -43,17 +43,4 @@ entity OrderItem {
     price          : Integer;
 }
 
-entity Cart {
-    key id         : UUID;
-    customer       : Association to Customer;
-    createdAt      : DateTime;
-    items          : Composition of many CartItem on items.cart = $self;
-}
 
-entity CartItem {
-    key id         : UUID;
-    cart           : Association to Cart;
-    product        : Association to Product;
-    quantity       : Integer;
-    addedAt        : DateTime;
-}

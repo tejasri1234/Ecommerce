@@ -7,7 +7,8 @@
   "private": true,
   "dependencies": {
     "@sap/cds": "^8",
-    "express": "^4"
+    "express": "^4",
+    "@cap-js/hana": "^1"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^1",
@@ -16,5 +17,10 @@
   "scripts": {
     "start": "cds-serve",
     "watch-project": "cds watch --open project/webapp/index.html?sap-ui-xx-viewCache=false"
+  },
+  "cds": {
+    "sql": {
+      "native_hana_associations": false
+    }
   }
 }
