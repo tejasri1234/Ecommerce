@@ -170,7 +170,8 @@
 .mainContainer {
     padding: 2rem;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin:20px;
+    margin-left:80px;
+    background-color: whitesmoke;
 }
 
 /* Title styling */
