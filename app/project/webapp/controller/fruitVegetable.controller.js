@@ -165,16 +165,65 @@ sap.ui.define([
             MessageToast.show(itemData.name + " added to cart");
         },
         onPlaceOrder: function () {
-          sap.m.MessageBox.success(
-              "Order placed successfully! Your order will be delivered in 10 minutes.",
-              {
-                  title: "Order Successful"
-              }
-          );
+          var oView = this.getView();
           var cartModel = this.getOwnerComponent().getModel("cartModel");
-          cartModel.setProperty("/items", []); 
-          this.onCloseCart();
-          this.updateCartDisplay();
+          var cartData = cartModel.getData();
+          var oUserModel = this.getOwnerComponent().getModel("userModel");
+          var oModel = oView.getModel(); // ODataModel
+      
+          // Get customer ID from userModel
+          var customerId = oUserModel && oUserModel.getProperty("/userId");
+          if (!customerId) {
+              sap.m.MessageBox.error("You must be logged in to place an order.");
+              return;
+          }
+      
+          if (!cartData.items || cartData.items.length === 0) {
+              sap.m.MessageBox.warning("Your cart is empty.");
+              return;
+          }
+      
+          // Use totalAmount from cartModel if available, else calculate
+          var totalAmount = cartData.totalAmount;
+          if (typeof totalAmount !== "number") {
+              totalAmount = cartData.items.reduce(function(sum, item) {
+                  return sum + (item.price * item.quantity);
+              }, 0);
+          }
+      
+          // Build order items payload
+          var orderItems = cartData.items.map(function(item) {
+              return {
+                  product_id: item.id, // Association to Product (check your OData $metadata for the correct property name)
+                  unit: item.quantity,
+                  price: item.price
+              };
+          });
+      
+          // Build order payload
+          var oOrderData = {
+            customer_id: customerId, // Association to Customer (check your OData $metadata for the correct property name)
+              orderDate: new Date().toISOString(),
+              status: "Placed",
+              totalAmount: totalAmount,
+              items: orderItems
+          };
+      
+          oModel.create("/Order", oOrderData, {
+              success: function () {
+                  sap.m.MessageBox.success(
+                      "Order placed successfully! Your order will be delivered in 10 minutes.",
+                      { title: "Order Successful" }
+                  );
+                  cartModel.setProperty("/items", []);
+                  cartModel.setProperty("/totalAmount", 0);
+                  this.onCloseCart();
+                  this.updateCartDisplay();
+              }.bind(this),
+              error: function () {
+                  sap.m.MessageBox.error("Order placement failed. Please try again.");
+              }
+          });
       }
     });
 });

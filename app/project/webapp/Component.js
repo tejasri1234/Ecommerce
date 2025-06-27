@@ -1,7 +1,8 @@
 sap.ui.define([
     "sap/ui/core/UIComponent",
-    "project/model/models"
-], (UIComponent, models) => {
+    "project/model/models",
+    "sap/ui/model/odata/v2/ODataModel"
+], (UIComponent, models,ODataModel) => {
     "use strict";
 
     return UIComponent.extend("project.Component", {
@@ -22,6 +23,9 @@ sap.ui.define([
             // Create and set global cart model
             var cartModel = new sap.ui.model.json.JSONModel({ items: [] });
             this.setModel(cartModel, "cartModel");
+            var url = "/odata/v2/catalog/"; // Your OData service root
+            var oModel = new ODataModel(url, { json: true });
+            this.setModel(oModel);
         
             // Enable routing
             this.getRouter().initialize();
