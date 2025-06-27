@@ -13,137 +13,169 @@ sap.ui.define([
     onInit() {
       var cartModel = new sap.ui.model.json.JSONModel({ items: [] });
       this.getView().setModel(cartModel, "cartModel");
+      var url = "/odata/v2/catalog/"; // Change this to your actual OData service root
+      this.oModel = new sap.ui.model.odata.v2.ODataModel(url, { json: true });
+      this.getView().setModel(this.oModel);
 
     },
     onProfilePress: function () {
-      var oView = this.getView();
-      if (!this._oLoginDialog) {
-        sap.ui.core.Fragment.load({
-          name: "project.view.LoginRegisterDialog",
-          controller: this
-        }).then(function (oDialog) {
-          oView.addDependent(oDialog);
-          this._oLoginDialog = oDialog;
+      var oDialog = this.byId("loginRegisterDialog");
+      if (oDialog) {
           oDialog.open();
-        }.bind(this));
       } else {
-        this._oLoginDialog.open();
+          sap.m.MessageBox.error("Login/Register dialog not found in the view.");
       }
-    },
+  },
 
-    onToggleForm: function () {
-      var oDialog = this._oLoginDialog;
-      if (!oDialog) {
-        sap.m.MessageBox.error("Dialog not open.");
-        return;
-      }
-      // The first content is the VBox (loginBox), its items are [loginForm, registerForm]
-      var aForms = oDialog.getContent()[0].getItems();
-      var oLoginForm = aForms[0];
-      var oRegisterForm = aForms[1];
-      if (!oLoginForm || !oRegisterForm) {
+  onToggleForm: function () {
+    // Access the login and register forms by their IDs in the view
+    var oLoginForm = this.byId("loginForm");
+    var oRegisterForm = this.byId("registerForm");
+
+    if (!oLoginForm || !oRegisterForm) {
         sap.m.MessageBox.error("Form controls not found.");
         return;
+    }
+
+    var bLoginVisible = oLoginForm.getVisible();
+    oLoginForm.setVisible(!bLoginVisible);
+    oRegisterForm.setVisible(bLoginVisible);
+},
+
+onLoginPress: function () {
+  var oView = this.getView();
+  var oDialog = oView.byId("loginRegisterDialog");
+  if (!oDialog) {
+      sap.m.MessageBox.error("Dialog not open.");
+      return;
+  }
+
+  var oEmailInput = oView.byId("emailInput");
+  var oPasswordInput = oView.byId("passwordInput");
+  console.log("loginEmail:", oEmailInput, "passwordInput:", oPasswordInput);
+
+  if (!oEmailInput || !oPasswordInput) {
+      sap.m.MessageBox.error("Login controls not found. Please try again.");
+      return;
+  }
+
+  var email = oEmailInput.getValue();
+  var password = oPasswordInput.getValue();
+
+  if (!email || !password) {
+      sap.m.MessageBox.warning("Please enter both email and password.");
+      return;
+  }
+
+  this.oModel.read("/Customer", {
+      filters: [
+          new sap.ui.model.Filter("email", sap.ui.model.FilterOperator.EQ, email),
+          new sap.ui.model.Filter("password", sap.ui.model.FilterOperator.EQ, password)
+      ],
+      success: function (oData) {
+          if (oData.results && oData.results.length > 0) {
+              sap.m.MessageToast.show("Login successful!");
+              oDialog.close();
+          } else {
+              sap.m.MessageBox.error("Invalid email or password.");
+          }
+      },
+      error: function () {
+          sap.m.MessageBox.error("Login failed. Please try again.");
       }
-      var bLoginVisible = oLoginForm.getVisible();
-      oLoginForm.setVisible(!bLoginVisible);
-      oRegisterForm.setVisible(bLoginVisible);
-    },
-
-    onLoginPress: function () {
-      var oDialog = this._oLoginDialog;
-      if (!oDialog) {
-        sap.m.MessageBox.error("Dialog not open.");
-        return;
-      }
-      // Get the login form VBox (first item in dialog content)
-      var oLoginBox = oDialog.getContent()[0].getItems()[0];
-      // Find the email and password Input controls by their order in the VBox
-      var aLoginItems = oLoginBox.getItems();
-      var oEmailInput = aLoginItems.find(function (oControl) {
-        return oControl.getMetadata().getName() === "sap.m.Input" && oControl.getType() === "Email";
-      });
-      var oPasswordInput = aLoginItems.find(function (oControl) {
-        return oControl.getMetadata().getName() === "sap.m.Input" && oControl.getType() === "Password";
-      });
-
-      if (!oEmailInput || !oPasswordInput) {
-        sap.m.MessageBox.error("Login controls not found. Please try again.");
-        return;
-      }
-
-      var email = oEmailInput.getValue();
-      var password = oPasswordInput.getValue();
-
-      if (!email || !password) {
-        sap.m.MessageBox.warning("Please enter both email and password.");
-        return;
-      }
-
-      // Dummy authentication logic
-      if (email === "user@example.com" && password === "password") {
-        sap.m.MessageToast.show("Login successful!");
-        oDialog.close();
-      } else {
-        sap.m.MessageBox.error("Invalid email or password.");
-      }
-    },
-
+  });
+},
     onRegister: function () {
-      var fullName = this.byId("fullName").getValue();
-      var email = this.byId("registerEmail").getValue();
-      var mobile = this.byId("mobileNumber").getValue();
-      var username = this.byId("username").getValue();
-      var password = this.byId("registerPassword").getValue();
-      var confirmPassword = this.byId("confirmPassword").getValue();
-      var termsAccepted = this.byId("terms").getSelected();
-
-      if (!fullName || !email || !mobile || !username || !password || !confirmPassword) {
-        sap.m.MessageBox.warning("Please fill in all required fields.");
-        return;
+      var oView = this.getView();
+  
+      var fullName = oView.byId("fullName").getValue();
+      var email = oView.byId("registerEmail").getValue();
+      var mobile = oView.byId("mobileNumber").getValue();
+      var password = oView.byId("registerPassword").getValue();
+      var confirmPassword = oView.byId("confirmPassword").getValue();
+      var termsAccepted = oView.byId("terms").getSelected();
+      var address = oView.byId("address") ? oView.byId("address").getValue() : "";
+  
+      if (!fullName || !email || !mobile || !password || !confirmPassword) {
+          sap.m.MessageBox.warning("Please fill in all required fields.");
+          return;
       }
       if (password !== confirmPassword) {
-        sap.m.MessageBox.error("Passwords do not match.");
-        return;
+          sap.m.MessageBox.error("Passwords do not match.");
+          return;
       }
       if (!termsAccepted) {
-        sap.m.MessageBox.warning("You must agree to the Terms & Conditions.");
-        return;
+          sap.m.MessageBox.warning("You must agree to the Terms & Conditions.");
+          return;
       }
-
-      sap.m.MessageToast.show("Registration successful! You can now log in.");
-      this.onToggleForm();
-    },
-
-    onForgotPasswordPress: function () {
+  
+      var oData = {
+          name: fullName,
+          email: email,
+          phone: mobile,
+          password: password,
+          address: address,
+          createdAt: new Date().toISOString()
+      };
+  
+      this.oModel.create("/Customer", oData, {
+          success: function () {
+              sap.m.MessageBox.success("Registration successful!");
+              this.onToggleForm();
+              var oDialog = this.byId("loginRegisterDialog");
+              if (oDialog) {
+                oDialog.close();
+            }
+  
+              // Clear all input fields
+              oView.byId("fullName").setValue("");
+              oView.byId("registerEmail").setValue("");
+              oView.byId("mobileNumber").setValue("");
+              oView.byId("registerPassword").setValue("");
+              oView.byId("confirmPassword").setValue("");
+              oView.byId("terms").setSelected(false);
+              if (oView.byId("address")) oView.byId("address").setValue("");
+  
+              var oUserModel = new sap.ui.model.json.JSONModel({ userId: email });
+              oView.getController().getOwnerComponent().setModel(oUserModel, "userModel");
+          }.bind(this),
+          error: function () {
+              sap.m.MessageBox.error("Registration failed. Please try again.");
+          }
+      });
+  },
+  
+  onForgotPasswordPress: function () {
       sap.m.MessageBox.information("Password reset functionality is not implemented in this demo.");
-    },
-
-    onToggleLoginPasswordVisibility: function () {
+  },
+  
+  onToggleLoginPasswordVisibility: function () {
       var oInput = this.byId("passwordInput");
       if (oInput) {
-        oInput.setType(oInput.getType() === "Password" ? "Text" : "Password");
+          oInput.setType(oInput.getType() === "Password" ? "Text" : "Password");
       }
-    },
-
-    onToggleRegisterPasswordVisibility: function () {
+  },
+  
+  onToggleRegisterPasswordVisibility: function () {
       var oInput = this.byId("registerPassword");
       if (oInput) {
-        oInput.setType(oInput.getType() === "Password" ? "Text" : "Password");
+          oInput.setType(oInput.getType() === "Password" ? "Text" : "Password");
       }
-    },
-
-    onToggleConfirmPasswordVisibility: function () {
+  },
+  
+  onToggleConfirmPasswordVisibility: function () {
       var oInput = this.byId("confirmPassword");
       if (oInput) {
-        oInput.setType(oInput.getType() === "Password" ? "Text" : "Password");
+          oInput.setType(oInput.getType() === "Password" ? "Text" : "Password");
       }
-    },
-    onCloseLoginDialog: function () {
-      if (this._oLoginDialog) {
-        this._oLoginDialog.close();
+  },
+  
+  onCloseLoginDialog: function () {
+      var oDialog = this.byId("loginRegisterDialog");
+      if (oDialog) {
+          oDialog.close();
       }
-    },
+  },
 
 
     onImagePress1: function () {
