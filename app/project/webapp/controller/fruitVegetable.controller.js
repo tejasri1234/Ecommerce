@@ -17,6 +17,9 @@ sap.ui.define([
             // Set OData model
             var oModel = this.getOwnerComponent().getModel(); // OData V4 model
             this.getView().setModel(oModel);
+            this.getView().setModel(new sap.ui.model.json.JSONModel({ results: [] }), "searchModel");
+            
+      
 
         },
         onAfterRendering: function () {
@@ -34,6 +37,24 @@ sap.ui.define([
                 vegetableList.getBinding("items").filter([vegetableFilter]);
             }
         },
+        onSearch: function (oEvent) {
+          var sQuery = oEvent.getParameter("query") || oEvent.getParameter("newValue");
+          var oModel = this.getView().getModel(); // ODataModel
+          var that = this;
+      
+          if (sQuery && sQuery.length > 0) {
+              oModel.read("/Product", {
+                  filters: [
+                      new sap.ui.model.Filter("name", sap.ui.model.FilterOperator.Contains, sQuery)
+                  ],
+                  success: function (oData) {
+                      that.getView().getModel("searchModel").setProperty("/results", oData.results);
+                  }
+              });
+          } else {
+              that.getView().getModel("searchModel").setProperty("/results", []);
+          }
+      },
 
         updateCartDisplay: function () {
             var view = this.getView();
@@ -211,6 +232,18 @@ sap.ui.define([
       
           oModel.create("/Order", oOrderData, {
               success: function () {
+                cartData.items.forEach(function(item) {
+                  var newStock = item.stock - item.quantity;
+                  if (newStock < 0) newStock = 0;
+                  oModel.update("/Product('" + item.id + "')", { stock: newStock }, {
+                      success: function () {
+                          // Optionally refresh product model or show a toast
+                      },
+                      error: function () {
+                          sap.m.MessageToast.show("Failed to update stock for " + item.name);
+                      }
+                  });
+              });
                   sap.m.MessageBox.success(
                       "Order placed successfully! Your order will be delivered in 10 minutes.",
                       { title: "Order Successful" }

@@ -437,12 +437,51 @@
     border-radius: 8px;
     letter-spacing: 0.5px;
 }
+.searchBox {
+    position: relative; /* Make this the positioning context */
+}
 
+.searchResultsBox {
+    position: absolute;
+    top: 2rem; /* Adjust this value to match your SearchField height + margin */
+    left: 0;
+    right: 17rem;
+    z-index: 100;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    padding: 0.5rem 1rem;
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+}
 
+.searchResultsList {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+    margin : 0.2rem;
+}
 
+.searchResultCard {
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+    padding: 0.5rem 1rem;
+    transition: box-shadow 0.2s, background 0.2s;
+}
 
+.searchResultCard:hover {
+    background: #f1f7ff;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+}
 
-
+.productName {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #222;
+}
 
 
 

@@ -15,12 +15,23 @@
                     </HBox>
                     <!-- Middle Section: Search -->
                     <HBox width="50%" class="searchBox" alignItems="Center">
-                        <SearchField placeholder="Search groceries..." width="120%" liveChange="onSearch"/>
+                        <SearchField placeholder="Search groceries..." width="150%" liveChange="onSearch"/>
+                        <HBox width="100%" class="searchResultsBox" visible="{= !!${searchModel>/results}.length }">
+                            <List items="{searchModel>/results}" width="150%" class="searchResultsList">
+                                <CustomListItem>
+                                    <HBox alignItems="Center" width="100%">
+                                        <Image src="{searchModel>image}" width="3rem"/>
+                                        <VBox>
+                                            <Text text="{searchModel>name}" class="productName"/>
+                                        </VBox>
+                                    </HBox>
+                                </CustomListItem>
+                            </List>
+                        </HBox>
                     </HBox>
                     <!-- Right Section: Icons -->
                     <HBox alignItems="Center" justifyContent="End" width="20%" class="rightIcons">
                         <Button icon="sap-icon://customer" press="onProfilePress" class="largeIconButton" type="Transparent"/>
-                        <Button icon="sap-icon://heart" press="onWishlistPress" class="largeIconButton" type="Transparent"/>
                         <Button icon="sap-icon://cart" press="onCartPress" class="largeIconButton" type="Transparent"/>
                     </HBox>                    
                 </HBox>
@@ -69,7 +80,7 @@
             </HBox>
             <VBox class="customFooter">
                 <HBox class="footerContent" >
-                    <Label class="footerText" text="© 2025 YourCompany. All rights reserved." />
+                    <Label class="footerText" text="© 2025 FreshMart. All rights reserved." />
                     <HBox class="footerLinks" >
                         <Link class="footerLink" text="Privacy Policy" href="/privacy" />
                         <Link class="footerLink" text="Terms of Service" href="/terms" />

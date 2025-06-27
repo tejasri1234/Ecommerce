@@ -11,7 +11,19 @@
         <!-- Middle Section: Search -->
         <HBox width="50%" class="searchBox" alignItems="Center">
             <SearchField placeholder="Search groceries..." width="120%" liveChange="onSearch"/>
-        </HBox>
+            <HBox width="100%" class="searchResultsBox" visible="{= !!${searchModel>/results}.length }">
+                            <List items="{searchModel>/results}" width="150%" class="searchResultsList">
+                                <CustomListItem>
+                                    <HBox alignItems="Center" width="100%">
+                                        <Image src="{searchModel>image}" width="3rem"/>
+                                        <VBox>
+                                            <Text text="{searchModel>name}" class="productName"/>
+                                        </VBox>
+                                    </HBox>
+                                </CustomListItem>
+                            </List>
+                        </HBox>
+              </HBox>
         <!-- Right Section: Icons -->
         <HBox alignItems="Center" justifyContent="End" width="20%" class="rightIcons">
             <Button icon="sap-icon://cart" press="onCartPress" class="largeIconButton" type="Transparent"/>
