@@ -1,4 +1,0 @@
-CustomerID,Name,Email,Password,Phone,Address
-"1","Alice Johnson","alice@example.com","password1","9876543210","123 Elm St, Bengaluru"
-"2","Bob Smith","bob@example.com","password2","9876543211","456 Oak St, Bengaluru"
-"3","Charlie Brown","charlie@example.com","password3","9876543212","789 Pine St, Bengaluru"

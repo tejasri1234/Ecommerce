@@ -1,65 +1,46 @@
-namespace db;
+namespace ecommerce;
 
-using { cuid, managed, Currency } from '@sap/cds/common';
-
-type GUID : String(32);
-
-entity Customers : managed {
-  key CustomerID : GUID;
-  Name           : String;
-  Email          : String(100);
-  Password       : String(8);
-  Phone          : String(15);
-  Address        : String;
+entity Customer {
+    key id         : UUID;
+    name           : String(100);
+    email          : String(100);
+    phone          : String(20);
+    password       : String;
+    address        : String(255);
+    createdAt      : DateTime;
 }
 
-entity Categories : managed {
-  key CategoryID : GUID;
-  Name           : String;
-  Description    : String;
+entity Category {
+    id         : UUID;
+    key name       : String(100);
+    description    : String(255);
 }
 
-entity Products : managed {
-  key ProductID  : GUID;
-  Name           : String;
-  Description    : String;
-  Price          : Decimal(15,2);
-  StockQuantity  : Integer;
-  ImageURL       : String;
-  Category       : Association to Categories;
+entity Product {
+    key id         : UUID;
+    name           : String;
+    price          : Integer;
+    quantity        : String;
+    stock          : Integer;
+    category       : Association to Category;
+    image          : String;
 }
 
-entity Orders : managed {
-  key OrderID     : GUID;
-  Customer       : Association to Customers;
-  OrderDate      : DateTime;
-  Status         : String;
-  TotalAmount    : Decimal(15,2);
-  ShippingAddress: String;
+entity Order {
+    key id         : UUID;
+    customer       : Association to Customer;
+    orderDate      : DateTime;
+    status         : String(50);
+    totalAmount    : Integer;
+    items          : Composition of many OrderItem on items.order = $self;
 }
 
-entity OrderItems : managed {
-  key OrderItemID : GUID;
-  Order           : Association to Orders;
-  Product         : Association to Products;
-  Quantity        : Integer;
-  Price           : Decimal(15,2);
+entity OrderItem {
+    key id         : UUID;
+    order          : Association to Order;
+    product        : Association to Product;
+    unit           : Integer;
+    price          : Integer;
 }
 
-entity Payments : managed {
-  key PaymentID   : GUID;
-  Order           : Association to Orders;
-  Amount          : Decimal(15,2);
-  Status          : String;
-  PaymentDate     : DateTime;
-  PaymentMethod   : String;
-}
 
-entity Shipments : managed {
-  key ShipmentID  : GUID;
-  Order           : Association to Orders;
-  Carrier         : String;
-  TrackingNumber  : String;
-  EstimatedDate   : DateTime;
-  Status          : String;
-}

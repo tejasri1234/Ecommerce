@@ -1,4 +1,0 @@
-ProductID,Name,Description,Price,StockQuantity,ImageURL,Category_CategoryID
-"1","Men's T-Shirt","Cotton T-Shirt in various colors",499.99,100,"/images/tshirt.jpg","1"
-"2","Women's Dress","Floral print summer dress",899.99,50,"/images/dress.jpg","2"
-"3","Running Shoes","Comfortable running shoes",1299.99,200,"/images/shoes.jpg","3"
