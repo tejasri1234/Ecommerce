@@ -16,6 +16,33 @@ sap.ui.define([
       this.getView().setModel(new sap.ui.model.json.JSONModel({ results: [] }), "searchModel");
 
     },
+    onMenuPress: function (oEvent) {
+      if (!this._oMenuSheet) {
+          this._oMenuSheet = new sap.m.ActionSheet({
+              buttons: [
+                  new sap.m.Button({
+                      text: "My Orders",
+                      icon: "sap-icon://order-status",
+                      press: () => {
+                        sap.m.MessageToast.show("Account pressed");
+                          
+                      }
+                  }),
+                  new sap.m.Button({
+                      text: "Account",
+                      icon: "sap-icon://account",
+                      press: () => {
+                          sap.m.MessageToast.show("Account pressed");
+                          // Add navigation logic here
+                      }
+                  })
+              ],
+              placement: sap.m.PlacementType.Bottom
+          });
+          this.getView().addDependent(this._oMenuSheet);
+      }
+      this._oMenuSheet.openBy(oEvent.getSource());
+  },
     onSearch: function (oEvent) {
       var sQuery = oEvent.getParameter("query") || oEvent.getParameter("newValue");
       var oModel = this.getView().getModel(); // ODataModel

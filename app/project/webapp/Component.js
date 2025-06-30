@@ -23,6 +23,7 @@ sap.ui.define([
             // Create and set global cart model
             var cartModel = new sap.ui.model.json.JSONModel({ items: [] });
             this.setModel(cartModel, "cartModel");
+            
             var url = "/odata/v2/catalog/"; // Your OData service root
             var oModel = new ODataModel(url, { json: true });
             this.setModel(oModel);

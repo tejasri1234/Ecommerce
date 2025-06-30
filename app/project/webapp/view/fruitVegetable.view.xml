@@ -21,7 +21,7 @@
                                 <Text text="₹{price}" class="itemPrice" />
                                 <Text text="{stock}" visible="false" />
 
-                                <Button text="Add to Cart" press="onAddToCart" class="addtocartButton"/>
+                                <Button text="Add to Cart" type="Emphasized" press="onAddToCart" class="addtocartButton"/>
                             </VBox>
                         </VBox>
                     </items>
@@ -41,7 +41,7 @@
                                 <Text text="{quantity}" class="itemWeight" />
                                 <Text text="₹{price}" class="itemPrice" />
                                 <Text text="{stock}" visible="false" />
-                                <Button text="Add to Cart" press="onAddToCart" class="addtocartButton"/>
+                                <Button text="Add to Cart" press="onAddToCart" type="Emphasized" class="addtocartButton"/>
                             </VBox>
                         </VBox>
                     </items>

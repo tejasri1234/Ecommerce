@@ -106,7 +106,7 @@
             <Input id="emailInput" type="Email" class="inputField" />
             <Label text="Password" class="inputLabel" required="true"/>
             <Input id="passwordInput" type="Password" class="inputField" showValueHelp="true" valueHelpIconSrc="sap-icon://show" valueHelpRequest="onToggleLoginPasswordVisibility"/>
-            <Button text="Sign In" press="onLoginPress" class="loginButton"/>
+            <Button text="Sign In" press="onLoginPress" type="Emphasized" class="loginButton"/>
             <Link text="Forgot your password?" press="onForgotPasswordPress" class="link"/>
             <Link text="New here? Create an account" press="onToggleForm" class="link"/>
         </VBox>
