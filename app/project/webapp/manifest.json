@@ -155,7 +155,14 @@
           "target": [
             "teacoffe"
           ]
-        }
+        },
+        
+        {
+          "pattern": "orders",
+  "name": "Orders",
+  "target": "Orders"
+  }
+  
       ],
       "targets": {
         "TargetView1": {
@@ -193,7 +200,15 @@
         "teacoffe" : {
           "id": "teacoffe",
           "name": "teacoffe"
+        },
+        
+        "Orders": {
+          "viewName": "Orders",
+          "viewType": "XML",
+          "transition": "slide",
+            "clearAggregation": false
         }
+  
 
       }
     },

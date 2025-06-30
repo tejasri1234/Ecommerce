@@ -1,0 +1,19 @@
+<mvc:View controllerName="project.controller.Orders"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <Page title="My Orders">
+        <content>
+            <VBox class="ordersContainer">
+                <List items="{ordersModel>/orders}" class="ordersList">
+                    <StandardListItem
+                        title="{ordersModel>order_id}"
+                        description="Price: ₹{ordersModel>price} | Unit: {ordersModel>unit}"
+                        icon="sap-icon://shipping-status"
+                        info="{ordersModel>status}"
+                        infoState="Success"/>
+                </List>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

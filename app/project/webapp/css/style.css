@@ -482,6 +482,29 @@
     font-size: 1.1rem;
     color: #222;
 }
+.ordersContainer {
+    padding: 1rem;
+    background-color: #f9f9f9;
+}
+
+.ordersList .sapMSLI {
+    border-bottom: 1px solid #ddd;
+    padding: 0.5rem 0;
+}
+
+.sapMSLITitle {
+    font-weight: bold;
+    color: #333;
+}
+
+.sapMSLIDescription {
+    color: #666;
+}
+
+.sapMSLIInfo {
+    font-weight: bold;
+    color: green;
+}
 
 
 

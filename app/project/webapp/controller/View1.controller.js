@@ -24,8 +24,8 @@ sap.ui.define([
                       text: "My Orders",
                       icon: "sap-icon://order-status",
                       press: () => {
-                        sap.m.MessageToast.show("Account pressed");
-                          
+                          const oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+                          oRouter.navTo("Orders"); // Ensure route name matches manifest.json
                       }
                   }),
                   new sap.m.Button({
@@ -33,7 +33,6 @@ sap.ui.define([
                       icon: "sap-icon://account",
                       press: () => {
                           sap.m.MessageToast.show("Account pressed");
-                          // Add navigation logic here
                       }
                   })
               ],
@@ -43,6 +42,7 @@ sap.ui.define([
       }
       this._oMenuSheet.openBy(oEvent.getSource());
   },
+  
     onSearch: function (oEvent) {
       var sQuery = oEvent.getParameter("query") || oEvent.getParameter("newValue");
       var oModel = this.getView().getModel(); // ODataModel
