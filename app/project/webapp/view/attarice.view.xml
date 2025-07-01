@@ -44,6 +44,7 @@
                     </items>
                 </HBox>
             </VBox>
+            <core:Fragment fragmentName="project.view.Footer" type="XML" xmlns:core="sap.ui.core"/>
 
         
         </content>

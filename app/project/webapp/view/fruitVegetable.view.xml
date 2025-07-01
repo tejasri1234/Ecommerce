@@ -48,7 +48,8 @@
                 </HBox>
 
 
-            </VBox>       
+            </VBox>
+            <core:Fragment fragmentName="project.view.Footer" type="XML" xmlns:core="sap.ui.core"/>       
         </content>
     </Page>
     <core:Fragment fragmentName="project.view.CartPanel" type="XML" xmlns:core="sap.ui.core"/>

@@ -2,18 +2,41 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
     xmlns:core="sap.ui.core">
-    <Page title="My Orders">
+    <Page showHeader="false">
         <content>
+            <VBox class="customNavBar">
+                <HBox alignItems="Center" justifyContent="SpaceBetween" height="3rem" width="100%">
+                    <!-- Left Section: Menu + Logo -->
+                    <HBox alignItems="Center" class="leftSection" width="20%">
+                        <Button icon="sap-icon://menu" press="onMenuPress" class="largeIconButton" type="Transparent"/>
+                        <HBox alignItems="Center" class="logoBox">
+                            <Text text="Fresh" class="freshText"/>
+                            <Text text="Mart" class="martText"/>
+                        </HBox>
+                    </HBox>
+                
+
+                    <!-- Right Section: Icons -->
+                    <HBox alignItems="Center" justifyContent="End" width="20%" class="rightIcons">
+                        <Button icon="sap-icon://refresh" press="onRefreshOrders" class="largeIconButton" type="Transparent"/>
+                        
+                    </HBox>
+                </HBox>
+            </VBox>
+            
+
             <VBox class="ordersContainer">
                 <List items="{ordersModel>/orders}" class="ordersList">
                     <StandardListItem
-                        title="{ordersModel>order_id}"
-                        description="Price: ₹{ordersModel>price} | Unit: {ordersModel>unit}"
+                        title="{ordersModel>orderDate}"
+                        description="₹{ordersModel>totalAmount}"
                         icon="sap-icon://shipping-status"
                         info="{ordersModel>status}"
                         infoState="Success"/>
                 </List>
             </VBox>
+            <core:Fragment fragmentName="project.view.Footer" type="XML" xmlns:core="sap.ui.core"/>
         </content>
+        
     </Page>
 </mvc:View>

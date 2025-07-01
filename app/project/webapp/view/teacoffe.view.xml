@@ -45,7 +45,7 @@
                 </HBox>
             </VBox>
 
-            <!-- Cart Panel -->
+            <core:Fragment fragmentName="project.view.Footer" type="XML" xmlns:core="sap.ui.core"/>
           
         </content>
     </Page>
