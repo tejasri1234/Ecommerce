@@ -36,7 +36,8 @@ sap.ui.define([
               }
             })
           ],
-          placement: sap.m.PlacementType.Bottom
+          placement: sap.m.PlacementType.Bottom,
+          class: "customActionSheet"
         });
         this.getView().addDependent(this._oMenuSheet);
       }
@@ -79,8 +80,25 @@ sap.ui.define([
     },
     onSearch: function (oEvent) {
       var sQuery = oEvent.getParameter("query") || oEvent.getParameter("newValue");
-      this.getOwnerComponent().onSearch(sQuery, this.getView());
-    },
+      var oModel = this.getView().getModel(); // ODataModel
+      var that = this;
+  
+      if (sQuery && sQuery.length > 0) {
+          oModel.read("/Product", {
+              filters: [
+                  new sap.ui.model.Filter("name", sap.ui.model.FilterOperator.Contains, sQuery)
+              ],
+              success: function (oData) {
+                
+                  console.log("Search results:", oData);
+
+                  that.getView().getModel("searchModel").setProperty("/results", oData.results);
+              }
+          });
+      } else {
+          that.getView().getModel("searchModel").setProperty("/results", []);
+      }
+  },
     onCartPress: function () {
       this.getOwnerComponent().onCartPress(this.getView());
     },

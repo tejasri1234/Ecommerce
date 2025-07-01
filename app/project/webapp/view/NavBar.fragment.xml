@@ -15,20 +15,24 @@
 
             <!-- Middle Section: Search -->
             <HBox width="50%" class="searchBox" alignItems="Center">
-                <SearchField placeholder="Search groceries..." width="100%" liveChange="onSearch"/>
-                <HBox width="100%" class="searchResultsBox" visible="{= !!${searchModel>/results}.length }">
+                <SearchField placeholder="Search groceries..." width="200%" liveChange="onSearch" />
+
+                <HBox width="100%" class="searchResultsBox" visible="{= ${searchModel>/results}.length > 0 }">
                     <List items="{searchModel>/results}" width="100%" class="searchResultsList">
-                        <CustomListItem>
-                            <HBox alignItems="Center" width="100%">
-                                <Image src="{image}" width="3rem"/>
-                                <VBox>
-                                    <Text text="{name}" class="productName"/>
-                                </VBox>
-                            </HBox>
-                        </CustomListItem>
+                    <CustomListItem class="searchResultCard">
+                        <HBox alignItems="Center" width="100%">
+                        <Image src="{searchModel>image}" width="3rem" />
+                        <VBox>
+                            <Text text="{searchModel>name}" class="productName" />
+                            <Text text="₹{searchModel>price}" class="productPrice" />
+                            <Text text="{searchModel>category_name}" class="productCategory" />
+                        </VBox>
+                        </HBox>
+                    </CustomListItem>
                     </List>
                 </HBox>
             </HBox>
+
 
             <!-- Right Section: Icons -->
             <HBox alignItems="Center" justifyContent="End" width="20%" class="rightIcons">

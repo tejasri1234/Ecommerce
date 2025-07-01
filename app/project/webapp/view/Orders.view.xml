@@ -8,7 +8,6 @@
                 <HBox alignItems="Center" justifyContent="SpaceBetween" height="3rem" width="100%">
                     <!-- Left Section: Menu + Logo -->
                     <HBox alignItems="Center" class="leftSection" width="20%">
-                        <Button icon="sap-icon://menu" press="onMenuPress" class="largeIconButton" type="Transparent"/>
                         <HBox alignItems="Center" class="logoBox">
                             <Text text="Fresh" class="freshText"/>
                             <Text text="Mart" class="martText"/>
@@ -28,8 +27,8 @@
             <VBox class="ordersContainer">
                 <List items="{ordersModel>/orders}" class="ordersList">
                     <StandardListItem
-                        title="{ordersModel>orderDate}"
-                        description="₹{ordersModel>totalAmount}"
+                        title="{ordersModel>id}"
+                        description="₹{ordersModel>totalAmount} | {ordersModel>orderDate}"
                         icon="sap-icon://shipping-status"
                         info="{ordersModel>status}"
                         infoState="Success"/>

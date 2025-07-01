@@ -67,8 +67,25 @@ sap.ui.define([
           },
           onSearch: function (oEvent) {
             var sQuery = oEvent.getParameter("query") || oEvent.getParameter("newValue");
-            this.getOwnerComponent().onSearch(sQuery, this.getView());
-          },
+            var oModel = this.getView().getModel(); // ODataModel
+            var that = this;
+        
+            if (sQuery && sQuery.length > 0) {
+                oModel.read("/Product", {
+                    filters: [
+                        new sap.ui.model.Filter("name", sap.ui.model.FilterOperator.Contains, sQuery)
+                    ],
+                    success: function (oData) {
+                      
+                        console.log("Search results:", oData);
+      
+                        that.getView().getModel("searchModel").setProperty("/results", oData.results);
+                    }
+                });
+            } else {
+                that.getView().getModel("searchModel").setProperty("/results", []);
+            }
+        },
           onCartPress: function () {
             this.getOwnerComponent().onCartPress(this.getView());
           },
@@ -90,5 +107,31 @@ sap.ui.define([
           onPlaceOrder: function () {
             this.getOwnerComponent().onPlaceOrder(this.getView());
           },
+          onMenuPress: function (oEvent) {
+            if (!this._oMenuSheet) {
+              this._oMenuSheet = new sap.m.ActionSheet({
+                buttons: [
+                  new sap.m.Button({
+                    text: "My Orders",
+                    icon: "sap-icon://order-status",
+                    press: () => {
+                      const oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+                      oRouter.navTo("Orders"); // Ensure route name matches manifest.json
+                    }
+                  }),
+                  new sap.m.Button({
+                    text: "Account",
+                    icon: "sap-icon://account",
+                    press: () => {
+                      sap.m.MessageToast.show("Account pressed");
+                    }
+                  })
+                ],
+                placement: sap.m.PlacementType.Bottom
+              });
+              this.getView().addDependent(this._oMenuSheet);
+            }
+            this._oMenuSheet.openBy(oEvent.getSource());
+          }
     });
 });

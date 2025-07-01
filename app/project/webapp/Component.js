@@ -339,23 +339,6 @@ sap.ui.define([
                 cartPanel.setVisible(false);
             }
         },
-        onSearch: function (sQuery, oView) {
-            var oModel = oView.getModel(); // ODataModel
-            var searchModel = oView.getModel("searchModel");
-        
-            if (sQuery && sQuery.length > 0) {
-                oModel.read("/Product", {
-                    filters: [
-                        new sap.ui.model.Filter("name", sap.ui.model.FilterOperator.Contains, sQuery)
-                    ],
-                    success: function (oData) {
-                        searchModel.setProperty("/results", oData.results);
-                    }
-                });
-            } else {
-                searchModel.setProperty("/results", []);
-            }
-        },
         
         onAddToCart: function (itemData) {
             var cartModel = this.getModel("cartModel");
@@ -386,7 +369,7 @@ sap.ui.define([
         },
         
         onPlaceOrder: function (oView) {
-            var cartModel = this.getModel("cartModel");
+           var cartModel = this.getModel("cartModel");
             var cartData = cartModel.getData();
             var oUserModel = this.getModel("userModel");
             var oModel = oView.getModel(); // ODataModel
