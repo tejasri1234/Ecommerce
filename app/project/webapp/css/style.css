@@ -484,14 +484,24 @@
     font-size: 1.1rem;
     color: #222;
 }
+/* order styling */
 .ordersContainer {
-    padding: 1rem;
     background-color: #f9f9f9;
+    padding: 2rem;
 }
 
+/* Adds spacing between each order item */
 .ordersList .sapMSLI {
     border-bottom: 1px solid #ddd;
-    padding: 0.5rem 0;
+    padding: 2rem;
+    margin-bottom: 1.5rem; /* space between orders */
+}
+
+/* Padding for the first three text elements */
+.ordersList .sapMText:nth-child(1),
+.ordersList .sapMText:nth-child(2),
+.ordersList .sapMText:nth-child(3) {
+    padding: 0.5rem;
 }
 
 .sapMSLITitle {
@@ -506,6 +516,7 @@
 .sapMSLIInfo {
     font-weight: bold;
 }
+
 /* Container for the whole section */
 .customerContainer {
     padding: 1rem;

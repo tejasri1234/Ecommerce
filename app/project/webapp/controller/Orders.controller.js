@@ -19,6 +19,7 @@ sap.ui.define([
         }
     
         var ordersModel = this.getOwnerComponent().getModel("ordersModel");
+        console.log(ordersModel.getData());
         if (ordersModel) {
             this.getView().setModel(ordersModel, "ordersModel");
         } else {

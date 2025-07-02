@@ -89,10 +89,17 @@ sap.ui.define([
             oModel.read("/Order", {
                 filters: [
                     new sap.ui.model.Filter("customer_id", sap.ui.model.FilterOperator.EQ, userId)
-                ],
+                ],              
+                urlParameters: {
+                    "$expand": "items($expand=product)"
+                },
+   
                 success: function (oData) {
+                    console.log(oData);
                     const ordersModel = new sap.ui.model.json.JSONModel({ orders: oData.results });
                     this.setModel(ordersModel, "ordersModel");
+                    
+                    
                 }.bind(this),
                 error: function () {
                     sap.m.MessageToast.show("Failed to load orders.");
@@ -377,6 +384,7 @@ sap.ui.define([
             }
         
             var orderItems = cartData.items.map(item => ({
+
                 product_id: item.id,
                 unit: item.quantity,
                 price: item.price
