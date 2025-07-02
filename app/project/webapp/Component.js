@@ -151,16 +151,11 @@ sap.ui.define([
             var email = oView.byId("registerEmail").getValue();
             var mobile = oView.byId("mobileNumber").getValue();
             var password = oView.byId("registerPassword").getValue();
-            var confirmPassword = oView.byId("confirmPassword").getValue();
             var termsAccepted = oView.byId("terms").getSelected();
-            var address = oView.byId("address") ? oView.byId("address").getValue() : "";
+            var address = oView.byId("address").getValue();
         
-            if (!fullName || !email || !mobile || !password || !confirmPassword) {
+            if (!fullName || !email || !mobile || !password || !address) {
                 sap.m.MessageBox.warning("Please fill in all required fields.");
-                return;
-            }
-            if (password !== confirmPassword) {
-                sap.m.MessageBox.error("Passwords do not match.");
                 return;
             }
             if (!termsAccepted) {
@@ -198,9 +193,8 @@ sap.ui.define([
                             oView.byId("registerEmail").setValue("");
                             oView.byId("mobileNumber").setValue("");
                             oView.byId("registerPassword").setValue("");
-                            oView.byId("confirmPassword").setValue("");
                             oView.byId("terms").setSelected(false);
-                            if (oView.byId("address")) oView.byId("address").setValue("");
+                            oView.byId("address").setValue("");
         
                             var oUserModel = new sap.ui.model.json.JSONModel({ userId: email });
                             this.setModel(oUserModel, "userModel");
@@ -229,13 +223,6 @@ sap.ui.define([
         
         onToggleRegisterPasswordVisibility: function (oView) {
             var oInput = oView.byId("registerPassword");
-            if (oInput) {
-                oInput.setType(oInput.getType() === "Password" ? "Text" : "Password");
-            }
-        },
-        
-        onToggleConfirmPasswordVisibility: function (oView) {
-            var oInput = oView.byId("confirmPassword");
             if (oInput) {
                 oInput.setType(oInput.getType() === "Password" ? "Text" : "Password");
             }

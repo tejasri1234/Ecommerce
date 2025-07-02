@@ -58,10 +58,7 @@ sap.ui.define([
           onToggleRegisterPasswordVisibility: function () {
             this.getOwnerComponent().onToggleRegisterPasswordVisibility(this.getView());
           },
-      
-          onToggleConfirmPasswordVisibility: function () {
-            this.getOwnerComponent().onToggleConfirmPasswordVisibility(this.getView());
-          },
+
       
           onCloseLoginDialog: function () {
             this.getOwnerComponent().onCloseLoginDialog(this.getView());
