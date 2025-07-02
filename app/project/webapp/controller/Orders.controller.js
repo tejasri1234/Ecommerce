@@ -7,7 +7,7 @@ sap.ui.define([
 
     return Controller.extend("project.controller.Orders", {
       onInit: function () {
-        this.getView().setModel(new sap.ui.model.json.JSONModel({ results: [] }), "searchModel");
+        
         var oUserModel = this.getOwnerComponent().getModel("userModel");
  
         var userId = oUserModel.getProperty("/userId");
@@ -31,6 +31,34 @@ sap.ui.define([
       this.getOwnerComponent().loadOrdersForUser();
       var ordersModel = this.getOwnerComponent().getModel("ordersModel");
       this.getView().setModel(ordersModel, "ordersModel");
+  },
+  onMenuPress: function (oEvent) {
+    if (!this._oMenuSheet) {
+      this._oMenuSheet = new sap.m.ActionSheet({
+        buttons: [
+          new sap.m.Button({
+            text: "My Orders",
+            icon: "sap-icon://order-status",
+            press: () => {
+              const oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+              oRouter.navTo("Orders"); // Ensure route name matches manifest.json
+            }
+          }),
+          new sap.m.Button({
+            text: "Account",
+            icon: "sap-icon://account",
+            press: () => {               
+                var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+                oRouter.navTo("account");
+            }
+          })
+        ],
+        placement: sap.m.PlacementType.Bottom,
+        class: "customActionSheet"
+      });
+      this.getView().addDependent(this._oMenuSheet);
+    }
+    this._oMenuSheet.openBy(oEvent.getSource());
   },
   
     
@@ -67,10 +95,7 @@ sap.ui.define([
           onCloseLoginDialog: function () {
             this.getOwnerComponent().onCloseLoginDialog(this.getView());
           },
-          onSearch: function (oEvent) {
-            var sQuery = oEvent.getParameter("query") || oEvent.getParameter("newValue");
-            this.getOwnerComponent().onSearch(sQuery, this.getView());
-          },
+         
         
         
     });

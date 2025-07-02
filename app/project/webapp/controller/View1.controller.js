@@ -31,8 +31,9 @@ sap.ui.define([
             new sap.m.Button({
               text: "Account",
               icon: "sap-icon://account",
-              press: () => {
-                sap.m.MessageToast.show("Account pressed");
+              press: () => {               
+                  var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+                  oRouter.navTo("account");
               }
             })
           ],

@@ -132,7 +132,6 @@ sap.ui.define([
                 
                         this.setModel(oUserModel, "userModel");
                         console.log(oUserModel);
-                        sap.m.MessageToast.show("Login successful!");
                         oDialog.close();
                         this.loadOrdersForUser();
                     } else {

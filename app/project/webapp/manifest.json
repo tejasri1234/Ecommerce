@@ -156,6 +156,13 @@
             "teacoffe"
           ]
         },
+        {
+          "name": "account",
+          "pattern": "account",
+          "target": [
+            "account"
+          ]
+        },
         
         {
           "pattern": "orders",
@@ -172,6 +179,10 @@
         "Login" : {
           "id": "Login",
           "name": "Login"
+        },
+        "account" : {
+          "id": "account",
+          "name": "account"
         },
         "fruitVegetableTarget" : {
           "id": "fruitVegetable",

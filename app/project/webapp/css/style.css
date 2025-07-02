@@ -506,19 +506,88 @@
 .sapMSLIInfo {
     font-weight: bold;
 }
-.customActionSheet {
-    border-radius: 12px;
-    background-color: #ffffff;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
-    padding: 8px;
-    width:150px !important;
-    max-width: 200px !important;
+/* Container for the whole section */
+.customerContainer {
+    padding: 1rem;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    width: 90%;
+    margin:40px;
+    height: auto;
+    
   }
   
-  .customActionSheet .sapMBtn {
-    margin: 6px 0;
-    font-weight: 600;
+  /* Card layout */
+  .customerCard {
+    background-color: #ffffff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    align-items: center;
   }
+  
+  /* Avatar styling */
+  .customerAvatar {
+    margin-right: 3rem;
+    margin-left: 2rem;
+  }
+  
+  /* Text layout */
+  .customerDetails .sapMText {
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
+  
+  .customerName {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  
+  .customerAddress,
+  .customerEmail,
+  .customerPhone {
+    font-size: 1rem;
+  }
+
+/* Ensure both buttons have same width */
+.wideActionButton .sapMBtnInner {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 50px !important;
+    box-sizing: border-box;
+  }
+  
+  /* Container styling */
+  .actionButtons {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; /* Ensures buttons fill container */
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+  
+  /* Button styling */
+  .wideActionButton {
+    width: 100% !important; /* Ensure outer button fills container */
+    font-size: 1rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Hover effect */
+  .wideActionButton:hover {
+    cursor: pointer;
+  }
+  
+  
+
+  
+  
+  
+
   
 
 
