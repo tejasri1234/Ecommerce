@@ -1,4 +1,0 @@
-PaymentID,Order_OrderID,Amount,Status,PaymentDate,PaymentMethod
-"1","1",1499.98,"Completed","2025-06-17T10:05:00","Credit Card"
-"2","2",1799.98,"Completed","2025-06-17T11:35:00","PayPal"
-"3","3",2299.98,"Pending","2025-06-17T14:05:00","Credit Card"

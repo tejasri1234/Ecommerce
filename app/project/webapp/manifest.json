@@ -17,11 +17,11 @@
     },
     "dataSources": {
       "mainService": {
-        "uri": "/catalog/",
+        "uri": "/odata/v2/catalog/",
         "type": "OData",
         "settings": {
           "annotations": [],
-          "odataVersion": "4.0"
+          "odataVersion": "2.0"
         }
       }
     }
@@ -63,6 +63,7 @@
         }
       },
       "": {
+        "type": "sap.ui.model.odata.v4.ODataModel",
         "dataSource": "mainService",
         "preload": true,
         "settings": {
@@ -98,13 +99,128 @@
           "target": [
             "TargetView1"
           ]
-        }
+        },
+        {
+          "name": "Login",
+          "pattern": "Login",
+          "target": [
+            "Login"
+          ]
+        },
+        {
+          "name": "fruitVegetable",
+          "pattern": "fruitVegetable",
+          "target": [
+            "fruitVegetableTarget"
+          ]
+        },
+        {
+          "name": "attarice",
+          "pattern": "attarice",
+          "target": [
+            "attarice"
+          ]
+        },
+        {
+          "name": "sweet",
+          "pattern": "sweet",
+          "target": [
+            "sweet"
+          ]
+        },
+        {
+          "name": "dairy",
+          "pattern": "dairy",
+          "target": [
+            "dairy"
+          ]
+        },
+        {
+          "name": "packed",
+          "pattern": "packed",
+          "target": [
+            "packed"
+          ]
+        },
+        {
+          "name": "cooldrinks",
+          "pattern": "cooldrinks",
+          "target": [
+            "cooldrinks"
+          ]
+        },
+        {
+          "name": "teacoffe",
+          "pattern": "teacoffe",
+          "target": [
+            "teacoffe"
+          ]
+        },
+        {
+          "name": "account",
+          "pattern": "account",
+          "target": [
+            "account"
+          ]
+        },
+        
+        {
+          "pattern": "orders",
+  "name": "Orders",
+  "target": "Orders"
+  }
+  
       ],
       "targets": {
         "TargetView1": {
           "id": "View1",
           "name": "View1"
+        },
+        "Login" : {
+          "id": "Login",
+          "name": "Login"
+        },
+        "account" : {
+          "id": "account",
+          "name": "account"
+        },
+        "fruitVegetableTarget" : {
+          "id": "fruitVegetable",
+          "name": "fruitVegetable"
+        },
+        "attarice" : {
+          "id": "attarice",
+          "name": "attarice"
+        },
+        "sweet" : {
+          "id": "sweet",
+          "name": "sweet"
+        },
+        "dairy" : {
+          "id": "dairy",
+          "name": "dairy"
+        },
+        "packed" : {
+          "id": "packed",
+          "name": "packed"
+        },
+        "cooldrinks" : {
+          "id": "cooldrinks",
+          "name": "cooldrinks"
+        },
+        "teacoffe" : {
+          "id": "teacoffe",
+          "name": "teacoffe"
+        },
+        
+        "Orders": {
+          "viewName": "Orders",
+          "viewType": "XML",
+          "transition": "slide",
+            "clearAggregation": false
         }
+  
+
       }
     },
     "rootView": {
